@@ -22,6 +22,8 @@ TipoIngreso               <-    c( "Turistas de internación",
                                    "Excursionistas fronterizos",
                                    "Excursionistas en cruceros")
 
+
+
  boxplot(ViaAerea,
          ViaTerrestre,
          TuristaPeatones,
@@ -48,3 +50,7 @@ TipoIngreso               <-    c( "Turistas de internación",
         horiz  = FALSE, 
         inset  = c(0.03, 0.1))
  
+ png(filename = "Turismo.png",
+     width = 800, height = 800)
+ 
+ dev.off()
