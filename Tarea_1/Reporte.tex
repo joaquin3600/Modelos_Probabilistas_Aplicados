@@ -1,8 +1,8 @@
 
 \documentclass[]{article}
 
-\title{Tarea 1 de modelos probabilistas aplicados}
-\author{Joaquin Arturo Velarde Moreno}
+\title{Universidad Autónoma de Nuevo León
+Facultad de Ingeniería Mecánica}
 
 \date{}
 \usepackage{braket}
@@ -17,37 +17,63 @@
 \begin{document}
 	\maketitle
 	\begin{center}
-		\line(1,0){200}
-		\linebreak
-		\linebreak
-		\linebreak
-		\textsc{\Large Análisis de Visitantes internacionales que ingresaron al país en el 2020}
-	
+
+
+\centerline{\textbf{TAREA 1:} } 
+\textbf{MODELOS PROBABILISTAS APLICADOS. 
+ANÁLISIS DE VISITANTES INTERNACIONALES 
+QUE INGRESARON AL PAÍS EN EL 2020}
+\linebreak
+\linebreak
+\linebreak
+\linebreak
+\linebreak
+\linebreak
+\centerline{Profesor: } 
+\centerline{DRA. SATU ELISA SCHAEFFER}
+\linebreak
+\linebreak
+\linebreak
+\centerline{Alumno: } 
+\centerline{Joaquín Arturo Velarde Moreno}
+\linebreak
+\linebreak
+\linebreak
+\centerline{Matería: } 
+\centerline{MODELOS PROBABILISTAS APLICADOS}
 	\end{center}
-
-\section{Origen de los datos}
-	Los datos que a continuación se analizaran fueron obtenidos de la pagina del INEGI\cite{inegi}, en su apartado de turismo, estos son obtenidos gracias a las encuestas de viajeros internacionales en las fechas de agosto 2018 a junio 2020 y después publicadas en formatos XLSX.
 	
-	\section{Uso de los datos}
-	
-	Se hizo un enfoque en el año 2020 aislando esta sección de datos de los demás y siendo generado y editado por Microsoft Excel\cite{excel}, este solo provee información preliminar de los meses Enero, Febrero, Marzo, Abril, Mayo, Junio. 
-	\linebreak
-	se creo un diagrama de cajas y bigotes con el cual se puede representar de manera visual el conjunto de visitantes por mes y obtener los siguientes datos: minimo, maximo, media, primer cuartil y tercer cuartil, la herramienta para su análisis fue R version 4.0.2\cite{rproject}.
+		\cite{inegi}
+		
+		
+\newpage
 
-	En la figura \ref{fig:mesh} se puede observar los datos clasificados en turistas de internación, turistas fronterizos, Excursionistas fronterizos y Excursionistas en cruceros.
+\section*{Origen de los datos:}
+Los datos que a continuación se analizarán fueron publicados por el INEGI\cite{inegi} en el apartado de Turismo y se obtuvieron mediante la aplicación de una serie de encuestas a viajeros que arribaron del extranjero a México durante el periodo de agosto del 2018 a junio del 2020. Dichos datos se publicaron en formatos XLSX.
 
-	\subsection{turistas de internación}
-Los turistas de internación los cuales son los que se adentran dentro del territorio del país tienen métodos de ingreso la vía aérea y la vía terrestre, en este se puede concluir que el método preferido es el aéreo.
+\section*{Metodología:}
+Esta sección de datos se concentró, generó y editó en Microsoft Excel\cite{excel} proveyendo información preliminar de los meses enero, febrero, marzo, abril, mayo y junio.\\
 
-	\subsection{turistas fronterizos}
-Los turistas fronterizos son aquellos que viajan a las ciudades fronterizas de nuestro país por desplazándose de manera peatonal o automovilística mente.
+Además. se creó un diagrama de cajas y bigotes que representa de manera visual el conjunto de visitantes por mes, obteniendo los siguientes datos: mínimo, máximo, media, primer cuartil y tercer cuartil. Los cuales fueron analizados utilizando el programa R versión 4.0.2\cite{rproject}.\\
 
-	\subsection{Excursionistas fronterizos}
-Los Excursionistas fronterizos son aquellos que principalmente cruzan la frontera para hacer compras y regresar a su país sin quedarse una noche desplazándose de manera peatonal o automovilística mente.
-
-	\subsection{Excursionistas de crucero}
-	Los Excursionistas de crucero son pasajeros que visitan un puerto mexicano sin quedarse la noche en México, su manera de proceder consiste en llegar al puerto, conocer, hacer compras y regresar al crucero, es interesante resaltar que debido a la crisis sanitaria del COVID-19 en los Últimos meses el numero de excursionistas de crucero ha sido de 0.
-\section{Gráfico}	
+En la figura \ref{fig:mesh} se puede observar la clasificación del tipo de turistas categorizándose en cuatro apartados:
+\begin{enumerate}
+	\item turistas de internación
+	\item  turistas fronterizos 
+	\item excursionistas fronterizos
+	\item excursionistas en cruceros.
+\end{enumerate}
+\subsection*{Turistas de internación:}
+Los turistas de internación son los que se adentran en el territorio nacional por vía aérea y terrestre, aunque la mayoría, como se puede observar, prefieren la internación aérea.
+\subsection*{Turistas fronterizos:}
+Los turistas fronterizos son aquellos que viajan a las ciudades fronterizas de nuestro país desplazándose ya sea mediante automóvil o de manera peatonal.
+\subsection*{Excursionistas fronterizos:}
+Los excursionistas fronterizos cruzan principalmente la frontera para hacer compras y retornan sin quedarse en el territorio nacional, ya sea en automóvil o de forma peatonal. 
+\subsection*{Excursionistas de crucero:}
+Los excursionistas de crucero son pasajeros que visitan un puerto mexicano sin quedarse la noche en México; es decir, llegan al puerto, conocer, hacen compras y regresan al crucero. Resalta en este apartado que, debido a la crisis sanitaria por la pandemia del COVID-19, en los últimos meses, el número de excursionistas de crucero ha sido de 0.
+		
+\newpage
+\subsection*{Gráfico:}
 	\counterwithin{figure}{section}
 	\begin{figure}[h]
     	\centering
