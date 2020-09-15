@@ -15,7 +15,7 @@ library('readr')
 library('stringr')
 #install_version("gutenbergr", version = "0.1.5", repos = "http://cran.us.r-project.org/"); 
 library('gutenbergr')
-#Codigo    <- 28408
+
         x <- "a1~!@#$%^&*(){}_+:\"<>?,./;'[]-="
         Codigo        <- 58791  
         Libro         <- gutenberg_download(c(Codigo))
