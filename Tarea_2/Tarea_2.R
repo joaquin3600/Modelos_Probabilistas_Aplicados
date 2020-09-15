@@ -39,10 +39,10 @@ library('gutenbergr')
         
     #4.1) Remover articulos y conjunciones de la frecuencia de las palabras
         
-        Articulos     <- elements <- read.csv(file.path( "Filter.csv"))
-        FrecuenciaPalabras = FrecuenciaPalabras[!(FrecuenciaPalabras$Var1 %in% Articulos$Articles),]
-        FrecuenciaPalabras = FrecuenciaPalabras[!(FrecuenciaPalabras$Var1 %in% Articulos$Conjunctions),]    
-        FrecuenciaPalabras = FrecuenciaPalabras[!(FrecuenciaPalabras$Var1 %in% Articulos$Pronouns),]    
+        Articulos          <- elements <- read.csv(file.path( "Filter.csv"))
+        FrecuenciaPalabras <- FrecuenciaPalabras[!(FrecuenciaPalabras$Var1 %in% Articulos$Articles),]
+        FrecuenciaPalabras <- FrecuenciaPalabras[!(FrecuenciaPalabras$Var1 %in% Articulos$Conjunctions),]    
+        FrecuenciaPalabras <- FrecuenciaPalabras[!(FrecuenciaPalabras$Var1 %in% Articulos$Pronouns),]    
        
     #5) Obtener Primer y Tercer Quantil para limites de analisis
         
