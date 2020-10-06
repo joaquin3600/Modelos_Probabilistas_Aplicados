@@ -129,7 +129,7 @@ Si queremos tener nuestra propia media y desviación, podemos afectar la variabl
     z1      = sigma * z1 + mu);
    \end{lstlisting}
 Si utilizamos este método para generar nuestras variables aleatorias, se obtendrían resultados similares a la distribución normal \autoref{fig:foobar}. 
-
+De esta manera podemos verificar que efectivamente nuestras variables se comportan de acuerdo a una distribución normal teniendo la mayor frecuencia de valores en su media \autoref{fig:boxplot}. 
 
 Es necesario que ambas funciones se obtengan al calcular con dos variables aleatorias de distribución uniforme, en caso de cambiar el cálculo usando únicamente una sola variable uniforme, se rompería la distribución normal  \autoref{fig:singlevariable} .
 Esto lo podemos verificar con el método \textit{Shapiro.test()}
@@ -199,6 +199,20 @@ Si cambiáramos una variable uniforme del método de Box-Muller a por ejemplo es
 \caption{Densidad de las distribuciones generadas con el método de Box-Muller.}
 \label{fig:foobar}
 \end{figure}
+
+
+
+\begin{figure}[b]
+    \centering
+    \includegraphics[width=.5\linewidth]{BoxplotVariables.png}    \caption{Distribución de normal de las variables del método Box-Muller por medio de boxplot.}
+    \label{fig:boxplot}
+\end{figure}
+
+
+
+
+
+
 
 
 
