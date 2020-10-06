@@ -1,7 +1,7 @@
 
 
 # cargar ggplot2
-  install.packages("ggplot2")
+ # install.packages("ggplot2")
   library(ggplot2)
   
       #Medoto de Gauss con ambas variables
@@ -55,19 +55,36 @@
             datos  <- c(z0, z1);
             return (sigma * datos + mu);
           }    
+      #Metodo Generador congruencial
+          uniforme = function(n, semilla) 
+          {
+            a = 11551
+            c = 27077
+            m = 39709
+            datos = numeric()
+            x     = semilla
+            while (length(datos) < n) 
+            {
+              x     = (a * x + c) %% m
+              datos = c(datos, x)
+            }
+            return(datos / (m - 1))
+          }
+          
+          #summary(uniforme(5000, 27))
           
           #Simular encuesta de 50 alumnos de una escuela con un promedio de 18 anios    
             Promedio       <- 18
             Edad           <- rnorm(150   ,Promedio,1)
             Edad_2         <- rnorm(500000,Promedio,1)
             Numeros        <- rnorm(50000 ,0       ,5)
-            
+
             Data_Alumnos   <- data.frame(Edad)
             Data_Alumnos_2 <- data.frame(Edad_2)
             Data_Numeros   <- data.frame(Numeros)
-            
+
           # 1 )  Histograma de frecuencia de alumnos con un promedio de 18 anios
-            
+
                 png(filename  = "Frecuencia.png",
                        width  = 600             ,
                        height = 400)
@@ -78,7 +95,7 @@
                       xlab = "Edad",
                       ylab = "Frecuencia",
                       col  = "darkgoldenrod4")
-            
+
           # 2 ) Histograma de la densidad de alumnos con un promedio de 18 anios
 
                 tmp           <- density(Edad)
@@ -111,7 +128,7 @@
                             sd   = sd(Data_Alumnos$Edad)) ,
                             add  = TRUE                   ,
                             col  = "red")
-            
+#             
           # 3 )  hacer un histograma en ggplot2 de una poblacion de 500000
             
                 png(filename  = "Ideal.png",
@@ -126,7 +143,7 @@
                            x     = 'Edad',
                            y     = 'Frecuencia'
                 )
-            
+
           # 4 )  hacer un histograma con una media de alto valor haciendo una situacion heterogenea
             
                 png(filename  = "Heterogenea.png",
@@ -141,8 +158,8 @@
                            x     = 'Valor',
                            y     = 'Frecuencia'
                  )
-          # 5 ) obtener una distribucion normal del metodo Box-muller de 2 variables  
-            
+          # 5 ) obtener una distribucion normal del metodo Box-muller de 2 variables
+
 
                 Edades <- numeric()
                 for(i in 1:(50000/2))
@@ -231,36 +248,36 @@
           # 7 ) obtener una distribucion normal del metodo Box-muller de 1 variable Z1
 
 
-                  Edades <- numeric()
-                  for(i in 1:(50000))
-                  {
-                    variables      <- gaussianSingle_2(18, 1)
-                    Edades         <- c(Edades,variables)
-                  }
+                    Edades <- numeric()
+                    for(i in 1:(50000))
+                    {
+                      variables      <- gaussianSingle_2(18, 1)
+                      Edades         <- c(Edades,variables)
+                    }
 
-                  Alumnos_3   <- data.frame(Edades)
-                  tmp         <- density(Alumnos_3$Edades)
+                    Alumnos_3   <- data.frame(Edades)
+                    tmp         <- density(Alumnos_3$Edades)
 
-                  png(filename  = "BoxMuller_z1.png",
-                      width  = 600        ,
-                      height = 800)
+                    png(filename  = "BoxMuller_z1.png",
+                        width  = 600        ,
+                        height = 800)
 
-                  opar=par(ps=18)
-                  hist(Alumnos_3$Edades          ,
-                       prob   = TRUE,
-                       ylim   = c(0, max(tmp$y)) ,
-                       breaks = 10,
-                       col    = "darkgoldenrod4",
-                       border = "gray10",
-                       xlab   = 'Datos Z1',
-                       ylab   = 'Densidad',
-                       main   = '',
-                       freq   = FALSE)
+                    opar=par(ps=18)
+                    hist(Alumnos_3$Edades          ,
+                         prob   = TRUE,
+                         ylim   = c(0, max(tmp$y)) ,
+                         breaks = 10,
+                         col    = "darkgoldenrod4",
+                         border = "gray10",
+                         xlab   = 'Datos Z1',
+                         ylab   = 'Densidad',
+                         main   = '',
+                         freq   = FALSE)
 
-                  lines(tmp,
-                        col   = "blue",
-                        lty   = 3     ,
-                        lwd   = 2)
+                    lines(tmp,
+                          col   = "blue",
+                          lty   = 3     ,
+                          lwd   = 2)
 
                   curve(dnorm(x,
                               mean = mean(Alumnos_3$Edades),
@@ -270,27 +287,27 @@
 
 
 
-                  test <- shapiro.test(sample(Edades, 5000, replace = TRUE)) 
+                  test <- shapiro.test(sample(Edades, 5000, replace = TRUE))
                   print(test)
-                  
+
                   png(filename  = "BoxplotVariables.png",
                       width  = 600        ,
                       height = 800)
                   opar=par(ps=18)
-                  boxplot(Alumnos_1$Edades, 
-                          Alumnos_2$Edades, 
+                  boxplot(Alumnos_1$Edades,
+                          Alumnos_2$Edades,
                           Alumnos_3$Edades,
                           names       = c("Z1 y Z2","Z1","Z2"),
                           xlab        = "Variables Box-Muller",
                           ylab        = "Distribucion",
                           col         = c("darkolivegreen3","orange","gold"),
                           border      =  "black",
-                          horizontal  = 
+                          horizontal  =
                           FALSE,notch      = FALSE)
-                  
+
          # # 8 ) obtener una distribucion normal del metodo Box-muller de 1 variable Z0 con solo una variable uniforme
 
-#
+
                  Edades <- numeric()
                  for(i in 1:(50000/2))
                  {
@@ -314,100 +331,136 @@
                       border = "gray10",
                       xlab   = 'Datos Z0',
                       ylab   = 'Densidad',
-                      main   = '',
-                      freq   = FALSE)
-
-                 lines(tmp,
-                       col   = "blue",
-                       lty   = 3     ,
-                       lwd   = 2)
-
-                 curve(dnorm(x,
-                             mean = mean(Alumnos_4$Edades),
-                             sd   = sd(Alumnos_4$Edades)) ,
-                       add =TRUE,
-                       col ="red")
+                       main   = '',
+                       freq   = FALSE)
+ 
+                  lines(tmp,
+                        col   = "blue",
+                        lty   = 3     ,
+                        lwd   = 2)
+ 
+                  curve(dnorm(x,
+                              mean = mean(Alumnos_4$Edades),
+                              sd   = sd(Alumnos_4$Edades)) ,
+                        add =TRUE,
+                        col ="red")
 
 
         # # 9 ) obtener una distribucion normal del metodo Box-muller de 1 variable Z1 con solo una variable uniforme
 
 
-                 Edades <- numeric()
-                 for(i in 1:(50000/2))
-                 {
-                   variables      <- gaussianSingle_2_UnaVariable(18, 1)
-                   Edades         <- c(Edades,variables)
-                 }
-
-                 Alumnos_5   <- data.frame(Edades)
-                 tmp         <- density(Alumnos_5$Edades)
-
-                 png(filename  = "BoxMuller_z1_variable_2.png",
-                     width  = 600        ,
-                     height = 800)
-
-                 opar=par(ps=18)
-                 hist(Alumnos_4$Edades          ,
-                      prob   = TRUE,
-                      ylim   = c(0, max(tmp$y)) ,
-                      breaks = 10,
-                      col    = "darkgoldenrod4",
-                      border = "gray10",
-                      xlab   = 'Datos Z1',
-                      ylab   = 'Densidad',
-                      main   = '',
-                      freq   = FALSE)
-
-                 lines(tmp,
-                       col   = "blue",
-                       lty   = 3     ,
-                       lwd   = 2)
-
-                 curve(dnorm(x,
-                             mean = mean(Alumnos_5$Edades),
-                             sd   = sd(Alumnos_5$Edades)) ,
-                       add =TRUE,
-                       col ="red")
+                  Edades <- numeric()
+                  for(i in 1:(50000/2))
+                  {
+                    variables      <- gaussianSingle_2_UnaVariable(18, 1)
+                    Edades         <- c(Edades,variables)
+                  }
+                  
+                  Alumnos_5   <- data.frame(Edades)
+                  tmp         <- density(Alumnos_5$Edades)
+                  
+                  png(filename  = "BoxMuller_z1_variable_2.png",
+                      width  = 600        ,
+                      height = 800)
+                  
+                  opar=par(ps=18)
+                  hist(Alumnos_4$Edades          ,
+                       prob   = TRUE,
+                       ylim   = c(0, max(tmp$y)) ,
+                       breaks = 10,
+                       col    = "darkgoldenrod4",
+                       border = "gray10",
+                       xlab   = 'Datos Z1',
+                       ylab   = 'Densidad',
+                       main   = '',
+                       freq   = FALSE)
+                  
+                  lines(tmp,
+                        col   = "blue",
+                        lty   = 3     ,
+                        lwd   = 2)
+                  
+                  curve(dnorm(x,
+                              mean = mean(Alumnos_5$Edades),
+                              sd   = sd(Alumnos_5$Edades)) ,
+                        add =TRUE,
+                        col ="red")
 
 
            # 9 ) obtener una distribucion normal del metodo Box-muller con ambas variables uniformes pero una dependiente de la otra
 
 
-                 Edades <- numeric()
-                 for(i in 1:(50000/2))
-                 {
-                   variables      <- gaussianCuadrado(18, 1)
-                   Edades         <- c(Edades,variables)
-                 }
+                  Edades <- numeric()
+                  for(i in 1:(50000/2))
+                  {
+                    variables      <- gaussianCuadrado(18, 1)
+                    Edades         <- c(Edades,variables)
+                  }
+                  
+                  Alumnos_6   <- data.frame(Edades)
+                  tmp         <- density(Alumnos_6$Edades)
+                  
+                  png(filename  = "Dependiente.png",
+                      width  = 600        ,
+                      height = 800)
+                  
+                  opar=par(ps=18)
+                  hist(Alumnos_6$Edades          ,
+                       prob   = TRUE,
+                       ylim   = c(0, max(tmp$y)) ,
+                       breaks = 10,
+                       col    = "burlywood",
+                       border = "gray10",
+                       xlab   = 'Datos',
+                       ylab   = 'Densidad',
+                       main   = '',
+                       freq   = FALSE)
+                  
+                  lines(tmp,
+                        col   = "blue",
+                        lty   = 3     ,
+                        lwd   = 2)
+                  
+                  curve(dnorm(x,
+                              mean = mean(Alumnos_6$Edades),
+                              sd   = sd(Alumnos_6$Edades)) ,
+                        add =TRUE,
+                        col ="red")
+                  
+ # 10 ) obtener una distribucion uniforme con el metodo ge generacion congruencial
+          
 
-                 Alumnos_6   <- data.frame(Edades)
-                 tmp         <- density(Alumnos_6$Edades)
+         
+          UniformeCongruencial      <- uniforme(5000, 30)
+          Uniforme                  <- runif(5000)
+          
 
-                 png(filename  = "Dependiente.png",
-                     width  = 600        ,
-                     height = 800)
+        
 
-                 opar=par(ps=18)
-                 hist(Alumnos_6$Edades          ,
-                      prob   = TRUE,
-                      ylim   = c(0, max(tmp$y)) ,
-                      breaks = 10,
-                      col    = "burlywood",
-                      border = "gray10",
-                      xlab   = 'Datos',
-                      ylab   = 'Densidad',
-                      main   = '',
-                      freq   = FALSE)
+          png(filename  = "Uniforme.png",
+          width  = 600        ,
+          height = 900)
 
-                 lines(tmp,
-                       col   = "blue",
-                       lty   = 3     ,
-                       lwd   = 2)
-
-                 curve(dnorm(x,
-                             mean = mean(Alumnos_6$Edades),
-                             sd   = sd(Alumnos_6$Edades)) ,
-                       add =TRUE,
-                       col ="red")
-
-                  while (!is.null(dev.list()))  dev.off()
+          opar=par(ps=18)
+          hist(Uniforme         ,
+               breaks = 10,
+               col    = "powderblue",
+               border = "gray10",
+               xlab   = 'Datos',
+               ylab   = 'Frecuencia',
+               main   = '')
+          
+          png(filename  = "UniformeCongruencial.png",
+              width  = 600        ,
+              height = 900)
+          
+          opar=par(ps=18)
+          hist(UniformeCongruencial ,
+               breaks = 10,
+               col    = "orangered3",
+               border = "gray10",
+               xlab   = 'Datos',
+               ylab   = 'Frecuencia',
+               main   = '')
+       
+            while (!is.null(dev.list()))  dev.off()

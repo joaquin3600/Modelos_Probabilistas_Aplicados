@@ -160,6 +160,40 @@ Si cambiáramos una variable uniforme del método de Box-Muller a por ejemplo es
    datos  <- c(z0, z1);
    \end{lstlisting}
 
+\section{Método generador lineal congruencial}
+Nosotros podemos obtener nuestro propio vector de números distribuidos pseudoaleatoriamente por medio del método congruencial (GLC).
+Este algoritmo permite obtener una secuencia de números pseudoaleatorios calculados con una función lineal y es uno de los metodos mas antiguos para la generación de números pseudoaleatorios,
+este puede ser definido en las siguiente fórmulas.
+\[X_{n+1} = (aX_{n} + c) \, mod\, \, \,  m\]
+
+
+
+donde:
+\begin{itemize}
+	\item $m$ es el modulo.
+	\item $X$ es la semilla.
+	\item $c$ es el incrementador.
+	\item $a$ es el multiplicador.
+\end{itemize}
+
+Esta función en R puede ser expresado como:
+  \begin{lstlisting}
+            datos <- numeric()
+            x     <- semilla
+            while (length(datos) < n) 
+            {
+              x     <- (a * x + c) %% m
+              datos <- c(datos, x)
+            }
+            return(datos / (m - 1))
+   \end{lstlisting}
+
+Si  usáramos este método para simular 5000 números obtenidos pseudoaleatoriamente, podríamos ver que se comporta de la misma manera que una frecuencia de números aleatorios \autoref{fig:uniforme} .
+
+
+
+
+
 \begin{figure}[b]
     \centering
     \includegraphics[width=.5\linewidth]{Frecuencia.png}    \caption{Distribución de frecuencia de la encuesta.}
@@ -244,7 +278,16 @@ Si cambiáramos una variable uniforme del método de Box-Muller a por ejemplo es
 
 
 
+\begin{figure}
+\centering
+\subcaptionbox{Histograma que muestra la frecuencia de un vector obtenido por el método generador lineal congruencial.}{\includegraphics[width=0.4\textwidth]{UniformeCongruencial.png}}%
+\hfill
+\subcaptionbox{Histograma que muestra la frecuencia de un vector obtenido por el método uniforme en R.}{\includegraphics[width=0.4\textwidth]{Uniforme.png}}%
+\hfill
 
+\caption{Frecuencia de distribución uniforme por el método generador lineal congruencial y el método en R con 5000 observaciones.}
+\label{fig:uniforme}
+\end{figure}
 
 
 
