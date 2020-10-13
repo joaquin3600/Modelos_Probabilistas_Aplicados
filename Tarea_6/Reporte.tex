@@ -1,7 +1,7 @@
 
 \documentclass[]{article}
 
-\title{Distribución de probabilidad de normal }
+\title{Pruebas estadísticas }
 
 \date{}
 \usepackage{braket}
@@ -57,23 +57,27 @@
 	
 
 \section{Introducción}
-El objetivo del siguiente reporte es describir el comportamiento de una distribución normal, ver su representación matemática y la forma de su curva en histogramas, para lo cual usaremos el programa R 4.0.2 \cite{rproject} y de este modo, haremos cálculos con conjuntos con la finalidad de mostrarlos gráficamente. Además, intentaremos simular una distribución normal a partir de valores uniformes utilizando la transformación Box-Muller. Para cumplir con esta finalidad, usaremos como apoyo el material de la Dra. Elisa Schaefer \cite{Articulo_1} \cite{Articulo_3} \cite{Articulo_2} \cite{Articulo_4}.
+Los objetivos de esta tarea son responder los cuestionamientos acerca del tema de pruebas estadísticas derivados de cuatro artículos diferentes dados por la Dra. Sara Verónica Rodríguez Sánchez y, además, aplicar una serie de pruebas estadísticas acerca del turismo internacional con el programa R \cite{rproject}.
 
-\section{Preguntas}
+
+\section{Preguntas y respuestas}
 \subsection{¿Relación entre contraste de hipótesis y pruebas estadísticas?}
-contraste de hipótesis es el procedimiento para encontrar la veracidad de una hipótesis, contrastándola con otra, para esto realizamos pruebas estadísticas y ver cual de estas es más factible.
+Es el procedimiento para encontrar la veracidad de una hipótesis contrastándola con otra para lo cual es necesario realizar pruebas estadísticas y comprobar cuál de dichas pruebas es más factible.
 
 \subsection{¿Qué indicaría rechazar la hipótesis nula?}
-Indicaría que nuestra prueba estadística nos dio un \textit{valor-p} menor al nivel de significancia (\textit{$p < \alpha $}), aceptando así la hipótesis alternativa; esto no significa que la hipótesis alternativa sea correcta pues podemos tener un error de tipo 1.
+Dicha hipótesis indicaría que nuestra prueba estadística nos dio un \textit{valor-p} menor al nivel de significancia (\textit{$p < \alpha $}), aceptando así la hipótesis alternativa, lo cual no significa necesariamente que la hipótesis alternativa sea correcta \cite{Articulo_1}, pues podemos tener un error de tipo 1.
+
 \subsection{¿Cómo se interpreta la salida de una prueba estadística?}
-La prueba estadística produce un numero denominado \textit{valor-p}, el cual tiene como limites \textit{0} y \textit{1}, el \textit{valor-p} es la probabilidad de obtener los datos bajo la hipótesis nula, esta se debe comparar con el nivel de significancia, y en caso de tener \textit{$p < \alpha $} rechazamos la hipótesis nula.
-\subsection{¿Cómo seleccionar el alpha?}
-El valor alpha debe ser primeramente un valor de \textit{0} a \textit{1}, generalmente este se fija en \textit{0.05}, \textit{0.01} o \textit{0.001}, la elección de alfa debe depender de cuan peligroso sea rechazar la hipótesis nula. Por ejemplo, en un estudio que se proponga demostrar los beneficios de un tratamiento médico, debería tener un alfa bajo. Por otro lado, cuando tomamos en cuenta la apreciación de un producto podemos ser más moderados. Además, es importante tomar en cuenta que tan factible es realizar el experimento múltiples veces para no ser muy exigentes con el.
+La prueba estadística produce un número denominado \textit{valor-p}, el cual tiene como limites \textit{0} y \textit{1}; el \textit{valor-p} es la probabilidad de obtener los datos bajo la hipótesis nula, esta se debe comparar con el nivel de significancia, y en caso de tener \textit{$p < \alpha $} rechazamos la hipótesis nula \cite{Articulo_1}.
+\subsection{¿Cómo seleccionar el alfa?}
+El valor alfa, también denominado nivel de significación, debe ser primeramente un valor de \textit{0} a \textit{1} y, generalmente, dicho valor se fija en \textit{0.05}, \textit{0.01} o \textit{0.001}.
+La elección de alfa debe depender de cuán peligroso sea rechazar la hipótesis nula. Por ejemplo, en un estudio que se proponga demostrar los beneficios de un tratamiento médico, deberá tener un alfa bajo. Por otro lado, si tomamos en cuenta la apreciación de un producto, podemos ser más moderados \cite{Articulo_1}. Además, es importante tomar en cuenta que tan factible es realizar el experimento múltiples veces para no ser muy exigentes con él.
+
 \subsection{¿Cuáles son los errores frecuentes de interpretación del valor p?.}
-Debido a que la prueba estadística suele usar muestras de una población aleatoriamente escogida, puede ocasionar 2 situaciones: que una hipótesis nula que es verdadera sea rechazada denominado error tipo 1 o que una hipótesis nula falsa sea aceptada denominado error tipo 2. 
+Debido a que la prueba estadística suele usar muestras de una población aleatoriamente escogida, puede ocasionar dos situaciones: que una hipótesis nula que es verdadera sea rechazada, denominado error tipo 1 o que una hipótesis nula falsa sea aceptada denominado error tipo 2.
 
 \subsection{¿Qué es la potencia estadística y para qué sirve?.}
-Es la capacidad de un experimento para conducir al rechazo de la hipótesis nula, la potencia de un experimento aumenta con alpha, con lo preciso que son las mediciones y con el numero de repeticiones del experimento, equivale a \textit{1} menos el riesgo de ser errónea cuando se acepta H0 (\textit{$1 - \beta $}), así mientras mayor sea la potencia menor es el riesgo de equivocarse al aceptar H0.
+Es la capacidad de un experimento para conducir al rechazo de la hipótesis nula \cite{Articulo_1}. La potencia de un experimento aumenta con alfa, con lo preciso que son las mediciones y con el numero de repeticiones del experimento, equivale a \textit{1} menos el riesgo de ser errónea cuando se acepta H0 (\textit{$1 - \beta $}), De este modo, mientras mayor sea la potencia, menor es el riesgo de equivocarse al aceptar H0.
 
 \subsection{Ejemplos de pruebas estadísticas	paramétricas y no paramétricas.}
 \begin{enumerate}    
@@ -85,29 +89,29 @@ Es la capacidad de un experimento para conducir al rechazo de la hipótesis nula
     \item la regresión lineal,
     \item el análisis de varianza unidireccional (ANOVA Oneway), 
     \item análisis de varianza factorial (ANOVA), 
-    \item análisis de covarianza (ANCOVA),
+    \item análisis de covarianza (ANCOVA).
 
   \end{enumerate}
   
 \item No paramétricas:
   \begin{enumerate}
-    \item Ji cuadrada,
+    \item chi squared test,
     \item coeficientes de correlación e independencia para tabulaciones cruzadas,
     \item coeficientes de correlación por rangos ordenados Spearman y Kendall,
-    \item Prueba de suma de rango Wilcoxon.
+    \item prueba de suma de rango Wilcoxon.
   \end{enumerate}
 \end{enumerate}
+
+
 \subsection{Resume la guía para encontrar la prueba estadística que buscas.}
 
 \subsection{¿Cuáles son los supuestos para aplicar técnicas paramétricas?.}
-Se tiene que tener la información de la distribución, ademas de tener eventos independientes, tener una muestra grande de números y escoger muestras al azar.
-
-
+Se requiere contar con la información de la distribución, además, tener eventos independientes, una muestra grande de números y seleccionar muestras al azar \cite{Articulo_2}.
 
 \section{Pruebas estadísticas}
 A continuación veremos las mas comunes pruebas estadísticas \cite{Articulo_0} y su aplicación en R         \cite{rproject}, junto con datos obtenidos de INEGI \cite{inegi}.
 \subsection{One sample t-Test.}
-Esta es una prueba estadística de tipo paramétricas y es usada para probar si la media de una muestra de una distribución normal puede ser un valor especifico.
+Esta es una prueba estadística de tipo paramétricas y es usada para probar si la media de una muestra de una distribución normal puede ser un valor especifico \cite{Articulo_0}.
 Como primer ejemplo utilizaremos el numero de visitantes que ingresan al país por mes por la vía aérea (\autoref{fig:Avion}), según los datos obtenidos del INEGI \cite{inegi}.
 
 Lo expresaremos en R como:
@@ -122,7 +126,7 @@ Lo expresaremos en R como:
    En esta prueba estadística quisimos demostrar que la media de personas que entran al país por avión al mes es de \textit{1,540,000} siendo esta nuestra hipotesis nula, sin embargo la prueba produjo un \textit{p-value} mayor al nivel de significancia de \textit{0.05}, por lo que no rechazamos nuestra hipotesis nula.
 
 \subsection{Wilcoxon Signed Rank Test.}
-Esta prueba estadística es un método no paramétrico que evalúa la media de una muestra sin asumir que esta distribuida normalmente, este puede ser una alternativa al t-Test, especialmente cuando no se tiene información de la distribución en que sigue.
+Esta prueba estadística es un método no paramétrico que evalúa la media de una muestra sin asumir que esta distribuida normalmente, este puede ser una alternativa al t-Test, especialmente cuando no se tiene información de la distribución en que sigue \cite{Articulo_0}.
 usaremos como muestra el numero de visitantes que ingresan al país por mes por la vía Terrestre el cual asumimos no tiene una distribución normal (\autoref{fig:Terrestre}), según los datos obtenidos del INEGI \cite{inegi}.
 Lo expresaremos en R como:
   \begin{lstlisting}
@@ -137,7 +141,7 @@ Lo expresaremos en R como:
 
 
 \subsection{Two Sample t-Test and Wilcoxon Rank Sum Test.}
-Tanto t-Test como Wilcoxon rank pueden ser usados para comparar la media de 2 muestras, la diferencia como ya dijimos es que t-Test asume que la muestra sigue una distribución normal mientras que Wilcoxon rank no.
+Tanto t-Test como Wilcoxon rank pueden ser usados para comparar la media de 2 muestras, la diferencia como ya dijimos es que t-Test asume que la muestra sigue una distribución normal mientras que Wilcoxon rank no \cite{Articulo_0}.
 Usaremos nuestras 2 muestras anteriores que son el numero de visitantes que ingresan al país por mes a través de la vía Terrestre y Aérea (\autoref{fig:Terrestre} y \autoref{fig:Avion}), según los datos obtenidos del INEGI \cite{inegi}.
 Lo expresaremos en R como:
   \begin{lstlisting}
@@ -154,7 +158,7 @@ Lo expresaremos en R como:
  
  
 \subsection{Shapiro Test.}
- Esta prueba estadística evalúa si una muestra sigue una distribución normal.
+ Esta prueba estadística evalúa si una muestra sigue una distribución normal \cite{Articulo_0}.
  Usaremos nuestra muestra de numero de visitantes que ingresan al país por mes a través de la vía marítima (\autoref{fig:Maritimo}), según los datos obtenidos del INEGI \cite{inegi}.
 Lo expresaremos en R como:
   \begin{lstlisting}
@@ -163,7 +167,7 @@ Lo expresaremos en R como:
 	W = 0.82518, p-value = 0.01838
 
    \end{lstlisting}
- En esta prueba estadística quisimos demostrar  nuestra hipótesis nula el cual que nuestra población de personas que entran al país por la vía marítima al mes sigue una distribución normal, sin embargo la prueba produjo un \textit{p-value}  menor al nivel de significancia de \textit{0.05}, por lo que rechazamos nuestra hipótesis nula.
+ En esta prueba estadística quisimos demostrar que  nuestra población de personas que entran al país por la vía marítima al mes sigue una distribución normal, sin embargo la prueba produjo un \textit{p-value}  menor al nivel de significancia de \textit{0.05}, por lo que rechazamos nuestra hipótesis nula.
 \begin{figure}
 \centering
 \subcaptionbox{Histograma que muestra la frecuencia de turistas ingresados al mes por la vía Aérea.}{\includegraphics[width=0.4\textwidth]{Avion.png}}%
@@ -198,7 +202,7 @@ Lo expresaremos en R como:
 \label{fig:Terrestre}
 \end{figure}
 
-
-\printbibliography[title={Referencias}]
 \clearpage 
+\printbibliography[title={Referencias}]
+
 \end{document}
