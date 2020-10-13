@@ -73,10 +73,10 @@ La prueba estadística produce un número denominado \textit{valor-p}, el cual t
 El valor alfa, también denominado nivel de significación, debe ser primeramente un valor de \textit{0} a \textit{1} y, generalmente, dicho valor se fija en \textit{0.05}, \textit{0.01} o \textit{0.001}.
 La elección de alfa debe depender de cuán peligroso sea rechazar la hipótesis nula. Por ejemplo, en un estudio que se proponga demostrar los beneficios de un tratamiento médico, deberá tener un alfa bajo. Por otro lado, si tomamos en cuenta la apreciación de un producto, podemos ser más moderados \cite{Articulo_1}. Además, es importante tomar en cuenta que tan factible es realizar el experimento múltiples veces para no ser muy exigentes con él.
 
-\subsection{¿Cuáles son los errores frecuentes de interpretación del valor p?.}
+\subsection{¿Cuáles son los errores frecuentes de interpretación del valor p?}
 Debido a que la prueba estadística suele usar muestras de una población aleatoriamente escogida, puede ocasionar dos situaciones: que una hipótesis nula que es verdadera sea rechazada, denominado error tipo 1 o que una hipótesis nula falsa sea aceptada denominado error tipo 2.
 
-\subsection{¿Qué es la potencia estadística y para qué sirve?.}
+\subsection{¿Qué es la potencia estadística y para qué sirve?}
 Es la capacidad de un experimento para conducir al rechazo de la hipótesis nula \cite{Articulo_1}. La potencia de un experimento aumenta con alfa, con lo preciso que son las mediciones y con el numero de repeticiones del experimento, equivale a \textit{1} menos el riesgo de ser errónea cuando se acepta H0 (\textit{$1 - \beta $}), De este modo, mientras mayor sea la potencia, menor es el riesgo de equivocarse al aceptar H0.
 
 \subsection{Ejemplos de pruebas estadísticas	paramétricas y no paramétricas.}
@@ -103,10 +103,15 @@ Es la capacidad de un experimento para conducir al rechazo de la hipótesis nula
 \end{enumerate}
 
 
-\subsection{Resume la guía para encontrar la prueba estadística que buscas.}
+\subsection{Resume la guía para encontrar la prueba estadística que buscas}
+Al escoger una prueba estadística debemos preguntarnos primeramente ¿cuál es nuestro objetivo? Asociar o comparar, aunque ambas establecen relaciones la comparación evalua estas relaciones entre uno o varios grupos.
+También hay analizar qué tipo de muestras tenemos, si es que son independientes o relacionadas, las relacionadas pueden ser tipo antes-después, como por ejemplo el estudio de pacientes donde se comparan antes y después de la aplicación de un tratamiento.
 
-\subsection{¿Cuáles son los supuestos para aplicar técnicas paramétricas?.}
-Se requiere contar con la información de la distribución, además, tener eventos independientes, una muestra grande de números y seleccionar muestras al azar \cite{Articulo_2}.
+La siguiente pregunta que debemos contestar es ¿qué tipo de datos tenemos? ya sean variables cualitativas o cuantitativas, al tener estos datos debemos corroborar si nuestros datos cumplen o no con los supuestos (normalidad, homogeneidad, independencia), con esto podremos elegir entre pruebas paramétricas, no paramétricas y robustas \cite{Articulo_3}.
+
+Como paso final hay que analizar si podemos confiar en los resultados datos por nuestra prueba estadística \textit{p-value} graficándolos para decidir \cite{Articulo_4}.
+\subsection{¿Cuáles son los supuestos para aplicar técnicas paramétricas?}
+Se requiere contar con la información de la distribución, además, tener eventos independientes, una muestra grande de números y seleccionar muestras al azar.
 
 \section{Pruebas estadísticas}
 A continuación veremos las mas comunes pruebas estadísticas \cite{Articulo_0} y su aplicación en R         \cite{rproject}, junto con datos obtenidos de INEGI \cite{inegi}.
@@ -168,7 +173,8 @@ Lo expresaremos en R como:
 
    \end{lstlisting}
  En esta prueba estadística quisimos demostrar que  nuestra población de personas que entran al país por la vía marítima al mes sigue una distribución normal, sin embargo la prueba produjo un \textit{p-value}  menor al nivel de significancia de \textit{0.05}, por lo que rechazamos nuestra hipótesis nula.
-\begin{figure}
+ 
+\begin{figure}[b]
 \centering
 \subcaptionbox{Histograma que muestra la frecuencia de turistas ingresados al mes por la vía Aérea.}{\includegraphics[width=0.4\textwidth]{Avion.png}}%
 \hfill
@@ -179,7 +185,7 @@ Lo expresaremos en R como:
 \label{fig:Avion}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[b]
 \centering
 \subcaptionbox{Histograma que muestra la frecuencia de turistas ingresados al mes por la vía marítima.}{\includegraphics[width=0.4\textwidth]{Maritimo.png}}%
 \hfill
@@ -191,7 +197,7 @@ Lo expresaremos en R como:
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[b]
 \centering
 \subcaptionbox{Histograma que muestra la frecuencia de turistas ingresados al mes por la vía terrestre.}{\includegraphics[width=0.4\textwidth]{Terrestre.png}}%
 \hfill
@@ -202,7 +208,7 @@ Lo expresaremos en R como:
 \label{fig:Terrestre}
 \end{figure}
 
-\clearpage 
-\printbibliography[title={Referencias}]
+ \clearpage 
 
+\printbibliography[title={Referencias}]
 \end{document}
