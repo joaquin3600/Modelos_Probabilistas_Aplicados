@@ -68,8 +68,9 @@ Usaremos como apoyo el material de la Dra. Elisa Schaefer \cite{MaterialClase}.
 
 
 \section{Definición correlación lineal}
-La correlación es una medida de la presencia de una relación lineal en un conjunto de datos que provienen de dos variables medidas al mismo tiempo sobre cada individuo; también se les conoce como datos bivariados.
-Estos se pueden representar gráficamente, como se muestra en una encuesta que se hizo a alumnas de una escuela (\autoref{fig:CorrelacionTest}). En la que se midió el peso y la altura de cada una de ellas; en la representación gráfica se puede ver que hay una relación entre el peso y estatura de estos individuos.
+
+La correlación es una medida de la presencia de una relación lineal de un conjunto de datos que provienen de dos variables medidas al mismo tiempo sobre una serie de individuos, también se le conoce como datos bivariados. Estos datos se pueden representar por medio de una gráfica, por ejemplo, en la (\autoref{fig:CorrelacionTest}) se muestra gráficamente los datos de una encuesta que se hizo a alumnas de una escuela para ver la relación entre su peso y estatura.
+
 
 \begin{figure}[hbt!] 
 \centering \includegraphics[width=.7\linewidth]{Figuras/CorrelacionTest.png}                 \caption{Relación entre peso(kg.) y altura(m.) de alumnas.}
@@ -77,19 +78,17 @@ Estos se pueden representar gráficamente, como se muestra en una encuesta que s
 \end{figure}
 
 
-En el presente reporte usaremos la correlación de Pearson, al cual denotaremos por \textit{r}, el rango de la correlación \textit{r} va de \textit{1} a \textit{-1}, esto puede generar 3 casos (\autoref{fig:casos}).
+En el presente reporte usaremos la correlación de Pearson, la cual denotaremos por \textit{r}; el rango de la correlación \textit{r} va de \textit{1} a \textit{-1}, lo cual puede generar tres casos (\autoref{fig:casos}):
 
 \begin{itemize}
-	\item $r$ igual a $1$: positiva.
-	\item $r$ igual a $-1$: negativa.
+	\item $r$ igual a $1$: positiva,
+	\item $r$ igual a $-1$: negativa,
 	\item $r$ igual a $0$:  sin correlación.
 
 \end{itemize}
 
 
-
-
-La mayoría de las veces no tendremos mediciones exactas para cada caso, si no que tendremos un aproximado a cada estado, con este aproximado podremos decidir si nuestros datos tienen una relación o si son independientes entre si.
+La mayoría de las veces no obtendremos mediciones exactas para cada caso, sino serán aproximadas y de estas, podremos decidir si existe una relación entre los datos o si son independientes entre sí.
 
 \begin{figure}[hbt!]
 \centering
@@ -97,7 +96,7 @@ La mayoría de las veces no tendremos mediciones exactas para cada caso, si no q
 \hfill
 \subcaptionbox{No hay relación alguna en los datos.}{\includegraphics[width=0.3\textwidth]{Figuras/SinCorrelacion.png}}%
 \hfill
-\subcaptionbox{Correlación negativa $Y$ aumenta cuando $X$ crece.}{\includegraphics[width=0.3\textwidth]{Figuras/CorrelacionPositiva.png}}%
+\subcaptionbox{Correlación positiva $Y$ aumenta cuando $X$ crece.}{\includegraphics[width=0.3\textwidth]{Figuras/CorrelacionPositiva.png}}%
 \hfill
 \caption{Correlaciones en sus valores negativo, positivo y 0.}
 \label{fig:casos}
@@ -109,12 +108,11 @@ La correlación de Pearson puede ser obtenida por la siguiente expresión:
 
 donde:
 \begin{itemize}
-	\item $x\ y\ y$ son nuestros datos bivariados.
-	\item $n$ es el numero de datos.
+	\item $x\ y\ y$ son nuestros datos bivariados,
+	\item $n$ es el número de datos.
 \end{itemize}
 Esta ecuación puede ser expresada en R de la siguiente manera:
   \begin{lstlisting}
-
     n                  <- length(VectorX)
     SumatoriaX         <- sum(VectorX)
     SumatoriaY         <- sum(VectorY)
@@ -125,15 +123,16 @@ Esta ecuación puede ser expresada en R de la siguiente manera:
     denominador        <- sqrt(denominadorX * denominadorY)
     correlacion        <- numerador / denominador
    \end{lstlisting}
-Existe una manera mas sencilla de hacer este calculo, obteniendo los promedios de cada vector  a los cuales denotaremos como $X\ y\ Y$, pudiéndose expresar de la siguiente manera:
+
+Existe una manera más sencilla de hacer este cálculo obteniendo los promedios de cada vector, a los cuales denotaremos como $X\ y\ Y$, pudiéndose expresar de la siguiente manera:
 \[\ \frac{\Sigma\left(x\ \times\ y\right)}{\sqrt{\Sigma x^2\times\Sigma y^2}}.\]
 donde:
 \begin{itemize}
-	\item $y$ = $Y - \mu Y$.
+	\item $y$ = $Y - \mu Y$,
 	\item $x$ = $X - \mu X$.
 
 \end{itemize}
-Esta ecuación puede ser expresada en R de la siguiente manera:
+Esta ecuación puede ser expresada en R de la siguiente forma:
   \begin{lstlisting}
     x        <- VectorX - mean(VectorX)
     y        <- VectorY - mean(VectorY)
@@ -142,9 +141,8 @@ Esta ecuación puede ser expresada en R de la siguiente manera:
    \end{lstlisting}
 
 \section{Transformadas}
-No todos los conjuntos de datos vienen de manera lineal, algunas vienen muy dispersos y otros forman curvas, como es el caso del ejemplo de la función $f\left(x\right)\ =\ x^2$ (\autoref{fig:Curva}). 
-En estos casos lo mejor es trabajar con transformadas, estas son manipulaciones que se hacen a un vector de los datos para poder acomodarlos una relación lineal. 
-una opción sencilla es la escalera de Tukey:
+
+No en todos los casos los conjuntos de datos aparecen de manera lineal; algunos se presentan muy dispersos y otros forman curvas, como es el caso del ejemplo de la función $f\left(x\right)\ =\ x^2$ (\autoref{fig:Curva}). En estos casos lo mejor es trabajar con transformadas, que son manipulaciones que se hacen a un vector de los datos para poder acomodarlos en una relación lineal. Una opción sencilla es la escalera de transformaciones de Tukey:
 
 \begin{table}[hbt!]
 \begin{center}
@@ -154,13 +152,13 @@ una opción sencilla es la escalera de Tukey:
     & $\frac{1}{x^2}$ & $\frac{1}{x}$ & $\frac{1}{\sqrt{x}}$ & $\log x$ & $\sqrt{x}$ & $x$ & $x^2$ \\
    \hline
  \end{tabular}
- \caption{Escalera de Tuker con un rango de -2 a 2.}
+ \caption{Escalera de Tukey con un rango de -2 a 2.}
  
 \label{t1}
 \end{center}
 \end{table}
 
-Podemos calcular comparar cada transformada en R de la siguiente manera:
+Podemos calcular y comparar cada transformada en R del siguiente modo:
   \begin{lstlisting}
       for(i in seq(-2,2,1))
       {
@@ -174,7 +172,7 @@ Podemos calcular comparar cada transformada en R de la siguiente manera:
        }
    \end{lstlisting}
 
-Dada la función $f\left(x\right)\ =\ 3x^2$ podemos buscar una transformada por la escalera de Tukey que nos encuentre el $\lambda$ que mas haga una relación lineal en nuestros conjuntos.
+Dada la función $f\left(x\right)\ =\ 3x^2$ podemos buscar una transformada por la escalera de Tukey que nos encuentre el $\lambda$ que mejore una relación lineal en nuestros conjuntos.
 
 
 
@@ -198,8 +196,8 @@ Dada la función $f\left(x\right)\ =\ 3x^2$ podemos buscar una transformada por 
 \end{figure}
 
 
-Una alternativa optimizada es la transformada Box-Scott, en esta expresion $X$ se transforma a $\frac{(x^{\Lambda }\ -\ 1)}{\Lambda }$.
-Podemos calcular comparar cada transformada en R de la siguiente manera:
+Una alternativa optimizada es la transformada Box-Scott, en esta expresion $X$ se transforma a $\frac{(x^{\lambda }\ -\ 1)}{\lambda }$.
+Podemos calcular y comparar cada transformada en R de la siguiente manera:
   \begin{lstlisting}
       for(i in seq(-2,2,0.05))
       {
