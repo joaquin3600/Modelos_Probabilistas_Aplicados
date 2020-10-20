@@ -155,14 +155,73 @@ una opción sencilla es la escalera de Tukey:
    \hline
  \end{tabular}
  \caption{Escalera de Tuker con un rango de -2 a 2.}
+ 
 \label{t1}
 \end{center}
 \end{table}
+
+Podemos calcular comparar cada transformada en R de la siguiente manera:
+  \begin{lstlisting}
+      for(i in seq(-2,2,1))
+      {
+          if(i > 0)
+          { z <- x^i}
+          else if(i < 0)
+          { z <- -1*x^i}
+          else
+          { z <- log(x)}
+          cor(y,z)
+       }
+   \end{lstlisting}
+
+Dada la función $f\left(x\right)\ =\ 3x^2$ podemos buscar una transformada por la escalera de Tukey que nos encuentre el $\lambda$ que mas haga una relación lineal en nuestros conjuntos.
+
+
+
+\begin{figure}[hbt!]
+\centering
+\subcaptionbox{Curva de la función $f\left(x\right)\ =\ 3x^2$.}{\includegraphics[width=0.3\textwidth]{Figuras/SinTransformada.png}}%
+\hfill
+\subcaptionbox{Transformada con $\lambda = -2$.}{\includegraphics[width=0.3\textwidth]{Figuras/Lambda-2.png}}%
+\hfill
+\subcaptionbox{Transformada con $\lambda = -1$.}{\includegraphics[width=0.3\textwidth]{Figuras/Lambda-1.png}}%
+\hfill
+\subcaptionbox{Transformada con $\lambda = 0$.}{\includegraphics[width=0.3\textwidth]{Figuras/Lambda0.png}}%
+\hfill
+\subcaptionbox{Transformada con $\lambda = 1$.}{\includegraphics[width=0.3\textwidth]{Figuras/Lambda1.png}}%
+\hfill
+\subcaptionbox{Transformada con $\lambda = 2$.}{\includegraphics[width=0.3\textwidth]{Figuras/Lambda2.png}}%
+\hfill
+\caption{Transformadas de la función $f\left(x\right)\ =\ 3x^2$.}
+
+\label{fig:casos}
+\end{figure}
+
+
+Una alternativa optimizada es la transformada Box-Scott, en esta expresion $X$ se transforma a $\frac{(x^{\Lambda }\ -\ 1)}{\Lambda }$.
+Podemos calcular comparar cada transformada en R de la siguiente manera:
+  \begin{lstlisting}
+      for(i in seq(-2,2,0.05))
+      {
+          z <- (abs(x)^i-1)/i
+          w <- c(w,cor(y,z))
+          v <- c(v,i)
+      }
+      plot(v, w)
+   \end{lstlisting}
+
+\begin{figure}[hbt!] 
+\centering \includegraphics[width=.7\linewidth]{Figuras/box-cox.png}                 \caption{Lambdas y su correlación usando la transformada de Box-Scott en la función $f\left(x\right)\ =\ 3x^2$.}
+\label{fig:Correlacionbox}
+\end{figure}
 
 \begin{figure}[bt!]
 \centering \includegraphics[width=.7\linewidth]{Figuras/CorrelacionCurva.png}                 \caption{Relación entre el conjunto X y el Y al aplicar $f\left(x\right)\ =\ x^2$.}
 \label{fig:Curva}
 \end{figure}
+
+
+
 
 \printbibliography[title={Referencias}]
 \end{document}
