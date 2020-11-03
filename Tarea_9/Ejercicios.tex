@@ -1,0 +1,163 @@
+
+\documentclass[]{article}
+
+\title{Tarea}
+
+\date{}
+\usepackage{braket}
+\usepackage{bbold}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{chngcntr}
+\usepackage{floatrow}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\counterwithin{figure}{section}
+\usepackage[backend=biber]{biblatex}
+
+\begin{document}
+
+\begin{center}
+
+
+\centerline{Tarea 9}
+
+\centerline{Joaquín Arturo Velarde Moreno}
+
+
+\end{center}
+	
+
+\section{Exercise 1, page 247}
+A card is drawn at random from a deck consisting of cards numbered 2 through 10. A player wins 1 dollar if the number on the card is odd and losses 1 dollar if the number is even. ¿What is the expected value of his winnings?\\
+$E = \sum x *P(X=x)$ \\
+$E = (-1)P(x=-1) + 1(1)P(x=1)$\\
+$P(X=1) = \frac{4}{9}$ \\
+$P(X=-1) = \frac{4}{9}$ \\
+$E = (-1)(\frac{4}{9}) +(1)(\frac{4}{9})$ \\
+$E = -\frac{1}{9}$ \\
+\section{Exercise 6, page 247}
+A die is rolled twice. Let $X$ denote the sum of the two numbers that turn up, and $Y$ the difference of the numbers (specifically, the number on the first roll minus the number on the second). Show that $E(XY) = E(X)E(Y)$. ¿Are $X$ and $Y$ independent?\\
+$A =$ result of the first die \\
+$B =$ result of the second die \\
+$X = A + B$ \\
+$Y = A - B$ \\
+$E(A) = E(B)$\\
+$E(A^{2}) = E(B^{2})$\\
+we will now show $E(XY) = E(X)E(Y)$\\
+$E(XY) = E(X)E(Y)$ \\
+$E(XY) = E((A+B)(A-B))$ \\
+$E(XY) = (A^{2} - B^{2}+ BA -AB)$ \\
+$E(XY) = (A^{2} - B^{2})$ \\
+$E(XY) = E(A^{2}) - E(B^{2})$ \\
+$E(XY) = 0$ \\
+$E(X)E(Y) = E(A+B)E(A-B)$\\
+$E(X)E(Y) = (E(A)+E(B))(E(A)-E(B))$\\
+$E(X)E(Y) = (E(A))^{2}-(E(B))^{2}$\\
+$E(X)E(Y) = 0$\\
+then we have $E(XY) = E(X)E(Y)$\\
+we will show now that $X$ and $Y$ are independent.
+By definition we have $P(X|Z)= P(x)$ if they are independent.
+We set $X = 2$ if we calculate the probability $P(X = 2) = \frac{1}{36} $ and now we calculate $P(X = 2|Y=5) = 0$.
+Since $P(X = 2) \neq P(X = 2|Y=5)$ ,then, $X$ and $Y$ are not independent.
+
+\section{Exercise 18, page 249}
+Exactly one of six similar keys opens a certain door. If you try the keys, one after another, ¿what is the expected number of keys that you will have to try before success?\\
+$E(X) = \sum_{x = 1}^{6} x * P(X = x)$\\
+$E(X) = \sum_{x = 1}^{6} x * \frac{1}{6}$\\
+$E(X) = (1+2+3+4+5+6)* \frac{1}{6}$\\
+$E(X) = 3.5$\\
+
+\section{Exercise 1, page 263}
+A number is chosen at random from the set $S = \{-1, 0, 1\}	$. Let $X$ be the number chosen. Find the expected value, variance, and standard deviation of $X$.\\
+$E(X) = \sum_{x = 1}^{3} x * P(X = x)$\\
+$E(X) = \sum_{x = 1}^{3} x * \frac{1}{3}$\\
+$E(X) = (-1, 0, 1)* \frac{1}{3}$\\
+$E(X) = 0$\\
+now for the variance
+$\sigma^{2} = V(X) = E((x-E(x))^{2})$\\
+$\sigma^{2} = E((x-0)^{2})$\\
+$\sigma^{2} = E(x^{2})$\\
+$\sigma^{2} = \sum x^{2} * P(X^{2} = x^{2})$\\
+$\sigma^{2}  = (0 * \frac{1}{3}) + (1 * \frac{2}{3})$\\
+$\sigma^{2}  = \frac{2}{3}$\\
+now for standar deviation
+$\sigma = \sqrt{\frac{2}{3}}$\\
+
+\section{Exercise 9, page 264}
+A die is loaded so that the probability of a face coming up is proportional to the number on that face. The die is rolled with outcome $X$. Find $V(X)$ and $D(X)$.\\
+The probability of each face is
+$P(X= x) = \frac{x}{21}$.\\
+with this we can get our expected value.\\
+By definition we have\\
+$E(X) = \sum x * P(X=x)$.\\
+$E(X) = \sum x * \frac{x}{21}$.\\
+$E(X) = \frac{1}{21} + \frac{4}{21} + \frac{9}{21} + \frac{16}{21} + \frac{25}{21} + \frac{36}{21}$.\\
+$E(X) = \frac{91}{21} $.\\
+using the definition we have $V(cX) = E((cX)^{2})-E((cX))^{2}$\\
+then we need to get $E(X^{2})$.\\
+$E(X^{2}) = \sum X^{2}*P(X^{2} = X^{2})$.\\
+however since it will be the same probability.
+$E(X^{2}) = \sum X^{2}*P(X = X)$.\\
+$E(X^{2}) = \sum X^{2}*\frac{x}{21}$.\\
+$E(X^{2}) = \sum X^{3}*\frac{x}{21}$.\\
+$E(X^{2}) = \frac{1}{21} + \frac{8}{21} +\frac{27}{21} + \frac{64}{21} + \frac{125}{21} + \frac{216}{21} = 21 $.\\
+with this we can get our variance.
+$V(X) = E(x^{2})- (E(x))^{2}$.\\
+$V(X)  = 21 - (\frac{91}{21})^{2}$.\\
+$V(X)  = \frac{981}{441}$.\\
+$V(X)  = 2.22$.\\
+finally the standar deviation.\\
+$D(X) = \sqrt{2.2}$\\
+
+
+\section{Exercise 12, page 264}
+Let $X$ be a random variable with $\mu = E(X)$ and $\sigma^{2} = V(X)$. Define $X^{*} = (X- \mu)/\sigma$. The random variable $X^{*}$ is called the \textit{standardized random variable associated} with $X$. Show that this standardized random variable has expected value 0 and variance 1.\\
+first we will get our expected value.\\
+$E(X) = E(\frac{x-\mu}{\sigma})$\\
+$E(X) = E(\frac{1}{\sigma}(x-\mu))$\\
+$E(X) = \frac{1}{\sigma}E(x-\mu)$\\
+$E(X) = \frac{1}{\sigma}(E(x)-E(\mu))$\\
+$E(X) = \frac{1}{\sigma}E(\mu-\mu)$\\
+$E(X) = 0$\\
+next the variance.\\
+$V(X)= V(\frac{x-\mu}{\sigma})$\\
+$V(X)= V(\frac{1}{\sigma}(x-\mu))$\\
+$V(X)= (\frac{1}{\sigma})^{2} V(x - \mu)$\\
+$V(X)= (\frac{1}{\sigma^{2}}) V(x)$\\
+$V(X)= (\frac{1}{\sigma})(\sigma^{2})$
+$V(X)= 1$
+
+
+
+
+\section{Exercise 3, page 278}
+The lifetime, measure in hours, of the ACME super light bulb is a random variable $T$ with density function $f_{T}(t) = \lambda ^{2}t\exp^{-\lambda t}$, where $ \lambda = 0.05$. ¿What is the expected litetime of this light bulb? ¿What is its variance?\\
+By definition we have $E(T) = \int_{0}^{\infty}(t)(f_{T}(t)dt)$ to get our expected value of a continuous variable.\\
+$E(T) = \int_{0}^{\infty}(t)(\lambda ^{2}t\exp^{-\lambda t})dt)$\\
+$E(T) = \int_{0}^{\infty}t^{2}\lambda ^{2}\exp^{-\lambda t}dt$\\
+$E(T) = 40$\\
+by definition we have $V(cX) = E((cX)^{2})-E((cX))^{2}$\\
+then we need to get $E(T^{2})$.\\
+$E(T^{2}) = \int_{0}^{\infty}(t^{2})(\lambda ^{2}t\exp^{-\lambda t})dt$\\
+$E(T^{2}) = \int_{0}^{\infty}t^{3}\lambda ^{2}\exp^{-\lambda t}dt$\\
+$E(T^{2}) = 2400$\\
+with this we can get the variance.\\
+$V(X) = E((X)^{2})-E((X))^{2}$\\
+$V(X) = 2400 - 1600$\\
+$V(X) = 800$\\
+\section{Exercise 15, page 249}
+A box contains two gold balls and three silver balls. You are allowed to choose successively balls from the box at random. You win 1 dollar each time you draw a gold ball and lose 1 dollar each time you draw a silver ball. After a draw, the ball is replaced. Show that, if you draw until you are ahead by 1 dollar or until there are no more gold balls, this is a favorable game.\\
+we need the probability of each case.\\
+$P(W = 1)  = \frac{1}{2}$.  \\
+$P(W = 0)  = \frac{1}{5}$.  \\
+$P(W = -1) = \frac{3}{10}$. \\
+By definition we have:\\
+$E(W) = \sum (g)P(G = g)$. \\
+$E(W) = (-1)\frac{3}{10} + (0)\frac{1}{5} + (1)(\frac{1}{2})$. \\
+$E(W) = -\frac{3}{10} + (1)(\frac{2}{10})$. \\
+$E(W) = \frac{1}{5}$. \\
+with this our strategy gives a expected value greater that 0, which means is favorable.
+\end{document}
