@@ -64,10 +64,10 @@
 \section{Introducción}
 En este reporte, con el uso del programa R 4.0.2 \cite{rproject}, me propongo demostrar y probar algunas propiedades de la covarianza propuestos en el material del curso \cite{MaterialClase}.
 \section{Convolución}
-Supongamos que tenemos 2 variables independientes de discretas, $X$ y $Y$, también tenemos la suma de estas 2 variables como $Z = X + Y$, para obtener esto podemos usar la convolución, el cual es la probabilidad de que la suma de 2 variables independientes sea un numero especifico.
+Supongamos que tenemos dos variables independientes discretas, $X$ y $Y$, también tenemos la suma de estas dos variables como $Z = X + Y$, para encontrar el valor de Z, podemos usar la convolución, la cual es la operación matemática que muestra la probabilidad de que la suma de dos variables independientes sea un número específico.  
 \[P(Z = j) = \sum_{i = -\infty}^{\infty}P(X = i)P(Y = j-i). \]
 
-Tomemos por ejemplo un caso real en donde nos interesa saber la suma de las 2 caras de un dado al ser lanzadas, nuestras variables $X$ y $Y$ serian el resultado de cada cara por lo que $Z = X + Y$, debido a que solo existen 6 posibles resultados al caer los dados, la ecuación seria.
+Tomemos por ejemplo un caso real en donde nos interesa saber la suma de las 2 caras de un dado al ser lanzadas, nuestras variables $X$ y $Y$ serian el resultado de cada cara por lo que $Z = X + Y$. Debido a que solo existen seis posibles resultados, al caer los dados la ecuación sería:
 \[P(Z = j) = \sum_{i = 1}^{6}P(X = i)P(Y = j-i). \]
 
 
@@ -135,7 +135,7 @@ Cov(aX + b,cY + d)
  
 \end{tabular}
 
-Por lo cual resulta que nuestra propiedad analítica es correcta 
+Por lo cual resulta que nuestra propiedad analítica es correcta.
 
 \subsection{Segunda propiedad}
 Probaremos ahora una segundo propiedad de la varianza de manera numérica empleando la herramienta R \cite{rproject}. Si $X,Y$ son variables aleatorias, entonces la varianza de la suma de las variables es igual a la varianza de $X$ y $Y$ más 2 veces la covarianza de $X,Y$  :
