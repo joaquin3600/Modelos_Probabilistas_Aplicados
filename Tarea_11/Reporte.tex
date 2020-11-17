@@ -1,7 +1,7 @@
 
 \documentclass[]{article}
 
-\title{Tarea convolución}
+\title{Convolución}
 
 \date{}
 \usepackage{braket}
@@ -51,7 +51,7 @@
 	\begin{center}
 
 
-\centerline{\textbf{TAREA 10} } 
+\centerline{\textbf{TAREA 11} } 
 \textbf{ }
 
 \centerline{Alumno: } 
@@ -62,16 +62,23 @@
 	
 
 \section{Introducción}
-En este reporte hago uso del programa R 4.0.2 \cite{rproject} para poder demostrar y probar algunas propiedades de la covarianza propuestos del material del curso\cite{MaterialClase}.
+En este reporte, con el uso del programa R 4.0.2 \cite{rproject}, me propongo demostrar y probar algunas propiedades de la covarianza propuestos en el material del curso \cite{MaterialClase}.
+\section{Convolución}
+Supongamos que tenemos 2 variables independientes de discretas, $X$ y $Y$, también tenemos la suma de estas 2 variables como $Z = X + Y$, para obtener esto podemos usar la convolución, el cual es la probabilidad de que la suma de 2 variables independientes sea un numero especifico.
+\[P(Z = j) = \sum_{i = -\infty}^{\infty}P(X = i)P(Y = j-i). \]
+
+Tomemos por ejemplo un caso real en donde nos interesa saber la suma de las 2 caras de un dado al ser lanzadas, nuestras variables $X$ y $Y$ serian el resultado de cada cara por lo que $Z = X + Y$, debido a que solo existen 6 posibles resultados al caer los dados, la ecuación seria.
+\[P(Z = j) = \sum_{i = 1}^{6}P(X = i)P(Y = j-i). \]
 
 
 \section{Covarianza}
 
-La covarianza es un dato básico que existe para determinar una dependencia entre 2 variables aleatorias, a diferencia de los coeficientes de correlación este no esta estandarizado, por lo que puede tomar valores de $\infty$ hasta $-\infty$ y lo representamos como $Cov(X,Y)$, esto es igual a $E[(X - E[X])(Y - E[Y])]$ por lo tanto:
+La covarianza es un dato básico que existe para determinar una dependencia de dos variables aleatorias. A diferencia de los coeficientes de correlación, este no está estandarizado, por lo que puede tomar valores de $\infty$ hasta $-\infty$ y se representa como $Cov(X,Y)$, esto es igual a $E[(X - E[X])(Y - E[Y])]$, por lo tanto:
 \[Cov(X,Y) = E[(X - E[X])(Y - E[Y])]. \]
 \subsection{Primera propiedad}
-Probaremos la siguiente propiedad de la covarianza, de manera numérica empleando la herramienta R \cite{rproject}, si $X,Y$ son variables aleatorias y $a, b, c, d$ son constantes tenemos que:
+Probaremos la primera propiedad de la covarianza de manera numérica empleando la herramienta R \cite{rproject}. Si $X,Y$ son variables aleatorias y $a, b, c, d$ son constantes, tenemos que:
 \[Cov(aX + b,cY + d) = acCov(X,Y). \]
+
 Primero estableceremos nuestras variables aleatorias por medio de una distribución uniforme para $X$ y asignando a nuestra $Y$ una operación de $X$.
       \begin{lstlisting}
         	X <- runif(100)
@@ -86,7 +93,7 @@ después declaramos nuestras constantes.
 		c <- 3
 		d <- 4
       \end{lstlisting}
-Ahora representaremos el primer miembro de nuestra ecuación $Cov(aX + b,cY + d)$.
+Ahora, representaremos el primer miembro de nuestra ecuación $Cov(aX + b,cY + d)$.
       \begin{lstlisting}
         	X <- runif(100)
 		Y <- X*2/3
@@ -96,7 +103,7 @@ Ahora representaremos el primer miembro de nuestra ecuación $Cov(aX + b,cY + d)
 		d <- 4
 		PrimerMiembro = cov((a * X) + b, (c * Y) + d)					
       \end{lstlisting}
-Por ultimo obtenemos nuestro segundo miembro de nuestra ecuación $acCov(X,Y)$.
+Por último, obtenemos el segundo miembro de nuestra ecuación $acCov(X,Y)$.
       \begin{lstlisting}
         	X <- runif(100)
 		Y <- X*2/3
@@ -111,7 +118,7 @@ Por ultimo obtenemos nuestro segundo miembro de nuestra ecuación $acCov(X,Y)$.
         	#> print(SegundoMiembro)
         	#[1] 0.1518915
       \end{lstlisting}
-con esto podemos demostrar que ambos miembros de la ecuación son lo mismo, para la prueba analítica tenemos que recordar que la $Cov(X,Y) $ es $E(XY) - E(X)E(Y)$. Si tenemos nuestras variables siendo afectadas por las constantes entonces tenemos que.\\
+con esto podemos demostrar que ambos miembros de la ecuación son lo mismo. para la prueba analítica tenemos que recordar que la $Cov(X,Y) $ es $E(XY) - E(X)E(Y)$. Si las variables son afectadas por nuestras constantes, entonces tenemos que.\\
 
 
 \begin{tabular}{c}
@@ -128,11 +135,12 @@ Cov(aX + b,cY + d)
  
 \end{tabular}
 
-por lo que nos queda que nuestra propiedad analíticamente es correcta.
+Por lo cual resulta que nuestra propiedad analítica es correcta 
 
 \subsection{Segunda propiedad}
-Probaremos ahora una segundo propiedad de la varianza, de manera numérica empleando la herramienta R \cite{rproject}, si $X,Y$ son variables aleatorias, entonces la varianza de la suma de las variables es igual a la varianza de $X$ y $Y$ mas 2 veces la covarianza de $X,Y$  :
+Probaremos ahora una segundo propiedad de la varianza de manera numérica empleando la herramienta R \cite{rproject}. Si $X,Y$ son variables aleatorias, entonces la varianza de la suma de las variables es igual a la varianza de $X$ y $Y$ más 2 veces la covarianza de $X,Y$  :
 \[Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y). \]
+
 Primero estableceremos nuestras variables aleatorias por medio de una distribución uniforme para $X$ y asignando a nuestra $Y$ una operación de $X$.
       \begin{lstlisting}
         	X <- runif(100)
@@ -150,7 +158,7 @@ Ahora representaremos los miembros de nuestra ecuación $Var(X) + Var(Y) + 2Cov(
         	#> print(SegundoMiembro)
         	#[1] 0.2186215
       \end{lstlisting}
-con esto podemos demostrar que ambos miembros de la ecuación son lo mismo, para la prueba analítica tenemos que recordar que la $V(X) $ es $E((X + Y)^{2}) - (E(X + Y))^{2}$. Si tenemos nuestras sumadas tenemos que:\\
+con esto podemos demostrar que ambos miembros de la ecuación son lo mismo. Para la prueba analítica debemos que recordar que la $V(X) $ es $E((X)^{2}) - (E(X))^{2}$. Si tenemos ahora la suma de $X$ y $Y$ entonces:\\
 
 
 \begin{tabular}{c}
@@ -166,7 +174,7 @@ V(X + Y)
  
 \end{tabular}      
 
-por lo que nos queda que nuestra propiedad analíticamente es correcta.      
+por lo cual resulta que nuestra propiedad analíticamente es correcta.      
 \hfill
 \printbibliography[title={Referencias}]
 \end{document}

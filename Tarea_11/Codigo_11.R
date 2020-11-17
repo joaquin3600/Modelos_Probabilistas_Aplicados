@@ -25,17 +25,5 @@ print(SegundoMiembro)
 
 
 
-
-#       png(filename  = "histDE.png",
-#           width  = 800             ,
-#           height = 500)
-#   opar=par(ps=18)
-#     hist(ArrayDestandar,
-#          main="",
-#          xlab="Desviación estandar",
-#          ylab="Frecuencia",
-#          border="black",
-#          col="gold")
-#     
 #    while (!is.null(dev.list()))  dev.off()
 #     
