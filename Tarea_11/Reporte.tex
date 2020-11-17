@@ -1,0 +1,172 @@
+
+\documentclass[]{article}
+
+\title{Tarea convolución}
+
+\date{}
+\usepackage{braket}
+\usepackage{bbold}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,booktabs}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{chngcntr}
+\usepackage{floatrow}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage[svgnames]{xcolor}
+
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+\renewcommand{\spanishtablename}{Cuadro}
+\usepackage{listings}
+\usepackage[%
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
+
+\counterwithin{figure}{section}
+\renewcommand*{\figureautorefname}{Figura}
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
+
+\begin{document}
+	\maketitle
+	\begin{center}
+
+
+\centerline{\textbf{TAREA 10} } 
+\textbf{ }
+
+\centerline{Alumno: } 
+\centerline{Joaquín Arturo Velarde Moreno}
+
+
+	\end{center}
+	
+
+\section{Introducción}
+En este reporte hago uso del programa R 4.0.2 \cite{rproject} para poder demostrar y probar algunas propiedades de la covarianza propuestos del material del curso\cite{MaterialClase}.
+
+
+\section{Covarianza}
+
+La covarianza es un dato básico que existe para determinar una dependencia entre 2 variables aleatorias, a diferencia de los coeficientes de correlación este no esta estandarizado, por lo que puede tomar valores de $\infty$ hasta $-\infty$ y lo representamos como $Cov(X,Y)$, esto es igual a $E[(X - E[X])(Y - E[Y])]$ por lo tanto:
+\[Cov(X,Y) = E[(X - E[X])(Y - E[Y])]. \]
+\subsection{Primera propiedad}
+Probaremos la siguiente propiedad de la covarianza, de manera numérica empleando la herramienta R \cite{rproject}, si $X,Y$ son variables aleatorias y $a, b, c, d$ son constantes tenemos que:
+\[Cov(aX + b,cY + d) = acCov(X,Y). \]
+Primero estableceremos nuestras variables aleatorias por medio de una distribución uniforme para $X$ y asignando a nuestra $Y$ una operación de $X$.
+      \begin{lstlisting}
+        	X <- runif(100)
+		Y <- X*2/3
+      \end{lstlisting}
+después declaramos nuestras constantes. 
+      \begin{lstlisting}
+        	X <- runif(100)
+		Y <- X*2/3
+		a <- 1
+		b <- 2
+		c <- 3
+		d <- 4
+      \end{lstlisting}
+Ahora representaremos el primer miembro de nuestra ecuación $Cov(aX + b,cY + d)$.
+      \begin{lstlisting}
+        	X <- runif(100)
+		Y <- X*2/3
+		a <- 1
+		b <- 2
+		c <- 3
+		d <- 4
+		PrimerMiembro = cov((a * X) + b, (c * Y) + d)					
+      \end{lstlisting}
+Por ultimo obtenemos nuestro segundo miembro de nuestra ecuación $acCov(X,Y)$.
+      \begin{lstlisting}
+        	X <- runif(100)
+		Y <- X*2/3
+		a <- 1
+		b <- 2
+		c <- 3
+		d <- 4
+		PrimerMiembro  = cov((a * X) + b, (c * Y) + d)
+		SegundoMiembro = a * c * cov(X,Y)
+		#> print(PrimerMiembro)
+        	#[1] 0.1518915
+        	#> print(SegundoMiembro)
+        	#[1] 0.1518915
+      \end{lstlisting}
+con esto podemos demostrar que ambos miembros de la ecuación son lo mismo, para la prueba analítica tenemos que recordar que la $Cov(X,Y) $ es $E(XY) - E(X)E(Y)$. Si tenemos nuestras variables siendo afectadas por las constantes entonces tenemos que.\\
+
+
+\begin{tabular}{c}
+
+$\begin{array} {lcl} 
+Cov(aX + b,cY + d) 
+& = & E[(aX + b)(cY + d)] - E(aX + b)E(cY + d) \\ 
+& = & E(acXY + adX + bcY + bd) - (acE(X)E(Y)+cbE(Y)+adE(X)+bd)  \\ 
+& = & acE(XY)+ adE(Y)+ bcE(Y)+ bd - (acE(X)E(Y)+ cbE(Y) + adE(Y) + bd)  \\ 
+& = & acE(XY)- acE(x)E(Y)  \\ 
+& = & ac(E(XY) - E(X)E(Y))  \\ 
+& = & acCov(X,Y)  \\ 
+\end{array}$  \\ 
+ 
+\end{tabular}
+
+por lo que nos queda que nuestra propiedad analíticamente es correcta.
+
+\subsection{Segunda propiedad}
+Probaremos ahora una segundo propiedad de la varianza, de manera numérica empleando la herramienta R \cite{rproject}, si $X,Y$ son variables aleatorias, entonces la varianza de la suma de las variables es igual a la varianza de $X$ y $Y$ mas 2 veces la covarianza de $X,Y$  :
+\[Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y). \]
+Primero estableceremos nuestras variables aleatorias por medio de una distribución uniforme para $X$ y asignando a nuestra $Y$ una operación de $X$.
+      \begin{lstlisting}
+        	X <- runif(100)
+		Y <- X*2/3
+      \end{lstlisting}
+
+Ahora representaremos los miembros de nuestra ecuación $Var(X) + Var(Y) + 2Cov(X,Y)$.
+      \begin{lstlisting}
+        	X <- runif(100)
+		Y <- X*2/3
+		PrimerMiembro   = var(X + Y)
+		SegundoMiembro  = var(X) + var(Y) + (2 * cov(X,Y))
+		#> print(PrimerMiembro)
+        	#[1] 0.2186215
+        	#> print(SegundoMiembro)
+        	#[1] 0.2186215
+      \end{lstlisting}
+con esto podemos demostrar que ambos miembros de la ecuación son lo mismo, para la prueba analítica tenemos que recordar que la $V(X) $ es $E((X + Y)^{2}) - (E(X + Y))^{2}$. Si tenemos nuestras sumadas tenemos que:\\
+
+
+\begin{tabular}{c}
+
+$\begin{array} {lcl} 
+V(X + Y) 
+& = & E[(X + Y)^{2}] - (E(X + Y))^{2}\\ 
+& = & E(X^{2} + 2XY + Y^{2}) - (E(X) + E(Y))^{2}  \\ 
+& = & E(X^{2})+2E(XY)+E(Y^{2}) - (E(X))^{2} + (E(Y))^{2} + 2E(X)E(Y)\\ 
+& = & E(X^{2})-(E(X))^{2} + E(Y^{2}) - (E(Y))^{2}  \\ 
+& = & V(X) + V(Y) + 2Cov(X,Y)  \\ 
+\end{array}$  \\ 
+ 
+\end{tabular}      
+
+por lo que nos queda que nuestra propiedad analíticamente es correcta.      
+\hfill
+\printbibliography[title={Referencias}]
+\end{document}
