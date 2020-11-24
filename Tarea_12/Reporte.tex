@@ -1,0 +1,292 @@
+
+\documentclass[]{article}
+
+\title{Práctica. Ejercicios}
+
+\date{}
+\usepackage{braket}
+\usepackage{bbold}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,booktabs}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{chngcntr}
+\usepackage{floatrow}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage[svgnames]{xcolor}
+\usepackage{commath}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+\renewcommand{\spanishtablename}{Cuadro}
+\usepackage{listings}
+\usepackage[%
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
+
+\counterwithin{figure}{section}
+\renewcommand*{\figureautorefname}{Figura}
+
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
+
+\begin{document}
+	\maketitle
+	\begin{center}
+
+
+\centerline{\textbf{TAREA 12} } 
+\textbf{ }
+
+\centerline{Alumno: } 
+\centerline{Joaquín Arturo Velarde Moreno}
+
+
+	\end{center}
+	
+
+\section{Introducción}
+
+El objetivo de esta tarea es resolver una serie de problemas seleccionados del libro Introducción a la probabilidad\cite{Material} con el uso del Wolfram Aplha\cite{wolf}.
+
+\section{Ejercicio 1, página 393}
+
+Sea Z1; Z2; :::; ZN describen un proceso de ramificación en el que cada padre tiene j ramas con probabilidad pj.
+Encuentre la probabilidad d de que el proceso finalmente se extinga.
+
+Sea $Z_{1}, Z_{2}, ..., Z_{N}$ describen un proceso de ramificación en el que cada padre tiene  $j$ ramas con probabilidad $p_{j}$. Encuentre la probabilidad  $d$ de que el proceso finalmente se extinga
+\\
+(a) $p_{0} = \frac{1}{2}, p_{1} = \frac{1}{4}, p_{2} = \frac{1}{4}$.\\
+\\
+(b) $p_{0} = \frac{1}{3}, p_{1} = \frac{1}{3}, p_{2} = \frac{1}{3}$.\\
+\\
+(c) $p_{0} = \frac{1}{3}, p_{1} = 0, p_{2} = \frac{2}{3}$.\\
+\\
+(d) $p_{j} = \frac{1}{2}, p_{1} = \frac{1}{4}, p_{2} = \frac{1}{4}$.\\
+\\
+(e) $p_{j} = (\frac{1}{3})(\frac{2}{3})^{j},$ for $j = 0, 1, 2, ...$\\
+\\
+(f) $p_{j} = \exp^{-2}2^{j},$ for $j = 0, 1, 2, ...$(estime $d$ numéricamente)..\\
+\\
+
+Para el punto (a) usamos un teorema el cual nos puede dar dos casos, sea $N$ el número de hijos y $d$ la probabilidad que el proceso muera, tenemos:
+$E[N] \leq 1$, entonces $d = 1$ o\\
+$E[N] > 1 $, entonces $d = \min(d = h(d))$.\\
+\\
+Por lo que, primeramente, podemos obtener la esperanza de $N$.\\
+\\
+$E(N) = \sum_{i = 0}^{2}N_{i} P(N_{i})$.\\
+\\
+$E(N) = 0 + \frac{1}{4} + 2 * \frac{1}{4} = \frac{3}{4} $.\\
+\\
+De acuerdo con nuestro teorema, si $E[N] \leq 1$ entonces $d = 1$.\\
+\\
+Para el punto (b) podemos usar el mismo teorema,
+podemos obtener primero la esperanza de $N$.
+\\
+$E(N) = \sum_{i = 0}^{2}N_{i} P(N_{i})$.\\
+\\
+$E(N) = 0 + \frac{1}{3} + 2 * \frac{1}{3} = \frac{3}{3} = 1 $.\\
+\\
+De acuerdo con nuestro teorema, si $E[N] \leq 1$ entonces $d = 1$.\\
+\\
+Para el punto (c) intentaremos el mismo teorema,
+obteniendo la esperanza de $N$.
+\\
+$E(N) = \sum_{i = 0}^{2}N_{i} P(N_{i})$.\\
+\\
+$E(N) = 0 + 0 + 2 * \frac{2}{3} = \frac{4}{3} $.\\
+\\
+De acuerdo con nuestro teorema si $E[N] > 1$  entonces $d$ sera la  más pequeña de la ecuación d = h(d).\\
+Esto también se puede representar como:\\
+$d = P_{0} + P_{1}d + P_{2}d^{2} $.\\
+$d = \frac{1}{3} + (0)d + \frac{2}{3}d^{2} $.\\
+Si lo igualamos a 0 tenemos,\\
+$\frac{2}{3}d^{2} - d + \frac{1}{3} = 0 $.\\
+Este ecuación podemos resolverla con la fórmula general la cual es:\\
+\[ d = \frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}. \]
+Para obtener nuestro valor tenemos que obtener la solución más pequeña de la fórmula general.\\
+$d = \frac{-1 + \sqrt{-1^{2} - 4(\frac{2}{3})(\frac{1}{3})}}{2(\frac{2}{3})}.$\\
+\\
+$d = \frac{-1 + \sqrt{-1 - \frac{8}{9}}}{\frac{4}{3}} .$\\
+$d = \frac{0.37}{\frac{4}{3}} .$\\
+$d = 0.277 .$\\
+\\
+$d = \frac{-1 - \sqrt{-1^{2} - 4(\frac{2}{3})(\frac{1}{3})}}{2(\frac{2}{3})}.$\\
+\\
+$d = -0.66.$\\
+\\
+
+Con esto obtenemos el $d$ que salió menor, $-0.66$, sin embargo resultó negativo, por lo cual es necesario seguir haciendo pruebas.\\
+\\
+Para el punto (d) obtendremos la esperanza de $N$.\\
+\\
+$E(N) = \sum_{N = 0}^{+\infty} N(\frac{1}{2^{N+1}})$.\\
+\\
+Debido a su naturaleza, es un poco más complicado obtener la siguiente esperanza, por lo cual utilizamos el siguiente código en wolframalpha para calcular la probabilidad.\\
+\\
+\textit{sum(n * (1/2**(n+1))) from 0 to infinity}.\\
+\\
+Esto nos da que $d = 1$.\\
+\\
+Para el punto (e) obtendremos la esperanza de $N$.\\
+\\
+$E(N) = \sum_{N = 0}^{+\infty} N((\frac{1}{3})(\frac{2}{3})^N)$.\\
+\\
+Debido a su naturaleza es un poco más complicado obtener la siguiente esperanza, por lo que utilizamos el siguiente código en wolframalpha para calcular la probabilidad.\\
+\\
+\textit{sum(n * (1/3)(2/3)**n) from 0 to infinity}.\\
+\\
+Esto nos da que $d = 2$, Por lo que será necesario revisar aún más este problema.
+Para el punto (f) obtendremos la esperanza de $N$.\\
+\\
+$E(N) = \sum_{N = 0}^{+\infty} N(\exp^{-2}(2^N))$.\\
+\\
+Debido a su naturaleza es un poco más complicado obtener la siguiente esperanza, por lo que utilizamos el siguiente código en wolframalpha para poder 
+obtener la probabilidad.\\
+\\
+\textit{sum(n * ((exp**-2)(2**n)) from 0 to infinity}.\\
+\\
+Esto nos da que $d = 1$.
+\section{Ejercicio 3, página 393}
+En el problema de las letras encadenadas (vea el ejemplo 10.14) encuentre el beneficio esperado si
+
+(a) $p_{0} = \frac{1}{2}, p_{1} = 0, p_{2} = \frac{1}{2}$.\\
+\\
+(b) $p_{0} = \frac{1}{6}, p_{1} = \frac{1}{2}, p_{2} = \frac{1}{3}$.\\
+\\
+Demuestre que si $p_{0} > \frac{1}{2}$, no puedes esperar obtener ganancias.\\
+\\
+Para el punto (a) tenemos que sacar la esperanza $E(Z_{1}) = \sum_{n=0}^{2} P_{n}N$.\\
+\\
+Esto es $E(Z_{1}) = 2(\frac{1}{2})$ por lo tanto nuestra esperanza es $E(Z_{1}) = 1$.\\
+Esto lo sustituimos en la ganancia esperada $50m + 50m^{12} - 100$, por lo que tenemos  $50 + 50*1^{12} - 100 = 0$\\
+\\
+Para el punto (b) también obtenemos la esperanza $E(Z_{1}) = \sum_{n=0}^{2} P_{n}N$.\\
+\\
+Esto es $E(Z_{1}) = \frac{1}{2}+2(\frac{1}{3})$ por lo tanto nuestra esperanza es $E(Z_{1}) = 1.16$.\\
+Esto lo sustituimos en la ganancia esperada $50m + 50m^{12} - 100$, por lo que tenemos  $50*(1.16) + 50(1.16)^{12} - 100 = 254$.\\
+Demostraremos ahora que si $P_{0} > \frac{1}{2}$ entonces no tendremos ganancias, si tenemos que $P_{0} > \frac{1}{2} entonces P_{1} + P_{2} < \frac{1}{2}$ lo cual tendremos que nuestro valor esperado es $E(Z_{1})= P_{1} + P_{2}$ y esto a su vez seria que $E(Z_{1}) < 1$ , por lo que al obtener nuestras ganancias tendríamos $50m + 50m^{12} - 100 < 0$ puesto que $m = E(Z{1})$. 
+
+
+
+\section{Ejercicio 6, página 403}
+X una variable aleatoria continua cuya función característica
+Sea $X$ una variable aleatoria continua cuya función característica $k_{X}(t)$ es\\
+$k_{X}(t) = \exp^{-|t|}, -\infty < t < +\infty$.\\
+\\
+Muestre de manera directa que la densidad $fx$ de $X$ es\\
+$fx(x) = \frac{1}{\pi(1 + x^{2})}$.\\
+$fx(x) = \frac{1}{2x}\int_{-\infty}^{+\infty} (e^{itx})e^{-|t|}dt$.
+
+\section{Ejercicio 1, página 402}
+
+Sea  $X$ una variable aleatoria continua con valores en [0,2] y densidad $fx$.Encuentra la función generatriz de momentos $g(t)$ para $X$ si\\
+(a) $fx(x) = \frac{1}{2}$.\\
+\\
+(b) $fx(x) = (\frac{1}{2})x$.\\
+\\
+(c) $fx(x) = 1 - (\frac{1}{2})x$.\\
+\\
+(d) $fx(x) = |1 - x|$.\\
+\\
+(e) $fx(x) = (\frac{3}{8})x^{2}$.\\
+\\
+
+\textit{Sugerencia: utilice la definición integral, como en los ejemplos 10.15 y 10.16}\\
+\\
+Para el punto (a) obtenemos $g(t)$ integrando de la siguiente manera $\int_{0}^{2} exp^{tx}(\frac{1}{2})dx$.\\
+Utilizamos el siguiente código en wolframalpha para poder 
+obtener la función generadora.\\
+\\
+\textit{integrate (e**(tx)*(1/2) dx) from 0 to 2}.\\
+\\
+Obtenemos $g(t) = \frac{\exp^{2t}-1}{2t}$\\
+Para el punto (b) obtenemos $g(t)$ integrando de la siguiente manera $\int_{0}^{2} exp^{tx}(\frac{1}{2})xdx$.\\
+Utilizamos el siguiente código en wolframalpha para poder 
+obtener la función generadora.\\
+\\
+\textit{integrate (e**(tx)*(1/2)*x dx) from 0 to 2}.\\
+\\
+Obtenemos $g(t) = \frac{e^{2t}(2t-1)+1}{2t^{2}}$.\\
+Para el punto (c) obtenemos $g(t)$ integrando de la siguiente manera $\int_{0}^{2} exp^{tx}(1 - \frac{1}{2}x)dx$.\\
+Utilizamos el siguiente código en wolframalpha para poder 
+obtener la función generadora.\\
+\\
+\textit{integrate (e**(tx)*(1-(1/2)*x) dx) from 0 to 2}.\\
+\\
+Obtenemos $g(t) = \frac{-2t + \exp^{2t}-1}{2t^{2}}$.\\
+
+Para el punto (d) obtenemos $g(t)$ integrando de la siguiente manera $\int_{0}^{2} exp^{tx}(|1-x|)dx$.\\
+Utilizamos el siguiente código en wolframalpha para poder 
+obtener la función generadora.\\
+\\
+\textit{integrate (e**(tx)*(|1-x|) dx) from 0 to 2}.\\
+\\
+Obtenemos $g(t) = \frac{(\exp^{2}-1)(\exp^{t}(t-1)+t+1)}{t^{2}}$.\\
+Para el punto (e) obtenemos $g(t)$ integrando de la siguiente manera $\int_{0}^{2} exp^{tx}(\frac{3}{8}x^{2})dx$.\\
+Utilizamos el siguiente código en wolframalpha para poder 
+obtener la función generadora.\\
+\\
+\textit{integrate (e**(tx)*(3/8)*x**2 dx) from 0 to 2}.\\
+\\
+Obtenemos $g(t) = \frac{3(e^{2t}(4t^{2}-4t+2)-2)}{8t^{3}}$.\\
+
+
+
+\section{Ejercicio 10, página 404}
+Sea $X_{1}$,$X_{2}$, ...,$X_{n}$ un proceso de ensayos independientes con densidad\\
+Sea $S_{n} = X_{1} + X_{2} + ... + X_{n}$.\\
+Sea $A_{n} = \frac{S_{n}}{n}$.\\
+Sea $S_{n}^{*} = (S_{n} - n\mu)/\sqrt{n\sigma ^{2}}$.\\
+$f(x) = \frac{1}{2}\exp^{-|x|}, -\infty < t < +\infty$.\\
+\\
+(a) Encuentre la media y la varianza de $f(x)$.\\
+\\
+(b) Encuentre la función generadora de momentos para  $X_{1}, S_{n}, A_{n}$, y $S_{n}^{*}$.\\
+\\
+(c) qué se puede decir sobre la función generadora de momentos de $S_{n}^{*}$ con $n \rightarrow \infty$.\\
+\\
+(c) qué se puede decir sobre la función generadora de momentos de $A_{n}$ con $n \rightarrow \infty$.\\
+\\
+Para el punto (a) tenemos que encontrar la varianza $V = E(X^{2}) - E(X)^{2}$, por lo que primero obtendremos la esperanza.\\
+Para la esperanza de $X$ tenemos $\int_{-\infty}^{+\infty}x(\frac{1}{2}\exp^{-|x|})dx$.\\
+\\
+Utilizamos el siguiente código en wolframaplha para obtener la esperanza.\\
+\\
+\textit{integrate x*(1/2 * exp**-x)dx from 0 to positive infinity}.\\
+\\
+Esto nos da 0.25, por lo que $E(X)^2 = 0.0625$.\\
+\\
+Para la esperanza de $X^2$ tenemos $\int_{-\infty}^{+\infty}x^2(\frac{1}{2}\exp^{-|x|})dx$.\\
+\\
+Utilizamos el siguiente código en wolframaplha para obtener la esperanza.\\
+\\
+\textit{integrate (x**2)*(1/2 * exp**{-x})dx from 0 to positive infinity}.\\
+\\
+Esto nos da 0.2215, por lo que $E(X^2) = 0.2215$.\\
+\\
+Por ultimo obtenemos nuestra varianza $V = 0.2215 - 0.0625 = 0.159$.\\
+\\
+Para el punto (b) empezamos con encontrar nuestra función generadora $X_{1}$ por lo que $g_{X_{1}}(t) = \int_{-\infty}^{+\infty} \exp^{xt}(\frac{1}{2}\exp^{-|x|})dx$.\\
+
+\hfill
+\printbibliography[title={Referencias}]
+\end{document}
