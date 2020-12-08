@@ -93,7 +93,9 @@ Donde:
 	\item $n$ tamaño de la muestra,
 	\item $\sigma_{p}$ es la desviación estándar de la muestra.
 \end{itemize}
-El teorema central del limite dice que, bajo condiciones más bien generales, las medias obtenidas de muestras aleatorias de una población tienden a tener una distribución que se aproxima a la normal.
+El teorema central del limite dice que, bajo condiciones más bien generales, las medias obtenidas de muestras aleatorias de una población tienden a tener una distribución que se aproxima a la normal.\\
+Teorema: Tenemos por $f(x)$ una densidad con $\mu$ y varianza finita $\sigma^{2}$ y sea $p$ la media de una muestra aleatoria de tamaño $n$ de $f(x)$ definimos la variable aleatoria $Y$ por la distribución de $Y$ se aproxima a la normal de media cero y varianza uno cuando $n$ crece indefinidamente.
+\[ Y_{p} = \frac{p_{n} - \mu}{\sigma}\sqrt{n}.\]
 
 Podemos observar este comportamiento en R \cite{rproject}, supongamos que tenemos una distribución exponencial con $n$ datos(\autoref{fig:casoexp}).
   \begin{lstlisting}
@@ -131,16 +133,30 @@ Si observamos la distribución de las medias obtenidas su distribución se aprox
 \subcaptionbox{Distribución del promedio de una muestra de 50 elementos aleatorios.}{\includegraphics[width=0.5\textwidth]{Figuras/medias_50.png}}% 
 \hfill
 \caption{Distribuciones de promedio en las muestras obtenidas al ir aumentando el número de muestras.}
-\section{Aplicación Pizzería}
-Un local de pizzas que opera en la Ciudad de México tarda una media de 35 minutos en llevar una pizza,
-con una desviación típica de 8 minutos. Supongamos que durante el día de hoy han repartido 200
-pizzas.
 
 \label{fig:casos}
 \end{figure}   
 \hfill
+\section{Aplicación Pizzería}
+Un local de pizzas que opera en la Ciudad de México tarda una media de 25 minutos en llevar una pizza,
+con una desviación típica de 7 minutos. Supongamos que durante el día de hoy han repartido 150
+pizzas.
+\begin{itemize}
+	\item ¿Cuál es la probabilidad de que la media de los tiempos de entrega de hoy esté entre 20 y 25 minutos?.
+\end{itemize}
+Consideremos la variable X como tiempo de entrega, 
+y sabemos que su media es 25 minutos y su
+desviación típica, 5. Pero en general esta variable no sigue una distribución normal.
+Durante el día de hoy se han entregado n = 150 paquetes. Es decir, tenemos una muestra $X_{1}, X_{2}, ..., X_{n}$ de nuestra
+variable.
+Por el teorema del límite central sabemos que la media muestral se comporta como una normal de
+esperanza 25 y desviación típica:
+$\frac{7}{\sqrt{150} = 0.571}.$
 
-
+Con estos datos podemos usar la  aproximación a la normal con nuestra variable $p$ para calcular la probabilidad buscada de la siguiente manera:
+\[ P(20 \leq p \leq 25) = P(\frac{20-25}{0.571} \leq \frac{p-25}{0.571} \leq \frac{25-25}{0.571}).\]
+Que es igual a la siguiente probabilidad:
+\[ P(\frac{20-25}{0.572} \leq Y \leq P(\frac{20-25}{0.572}) = P(-8.74 \leq Y \leq 0) = P(Y \leq 0) - P(Y \leq -8.74) = 0.5 - 0.\]
 
 \printbibliography[title={Referencias}]
 \end{document}
