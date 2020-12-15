@@ -1,0 +1,92 @@
+
+\documentclass[]{article}
+
+\title{Retroalimentación de propuestas para proyecto final}
+
+\date{}
+\usepackage{braket}
+\usepackage{bbold}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,booktabs}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{chngcntr}
+\usepackage{floatrow}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage[svgnames]{xcolor}
+\usepackage{commath}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\DeclareRobustCommand{\bbone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
+\DeclareMathOperator{\EX}{\mathbb{E}}% expected val
+\renewcommand{\spanishtablename}{Cuadro}
+\usepackage{listings}
+\usepackage[%
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
+
+\counterwithin{figure}{section}
+\renewcommand*{\figureautorefname}{Figura}
+
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
+
+\begin{document}
+	\maketitle
+	\begin{center}
+
+
+\centerline{\textbf{TAREA 16} } 
+\textbf{ }
+
+\centerline{Alumno: } 
+\centerline{Joaquín Arturo Velarde Moreno}
+
+
+	\end{center}
+	
+
+\section{Erick, Galletas de mantequilla}
+\emph{Un negocio peque~no dedicado a la venta de galletas de mantequilla, desea saber los niveles
+óptimos para hornear sus galletas, ya que ha decidido innovar y probar nuevos ingredientes
+y así poder ofertar otro tipo de producto, algunos factores que se suponen afecta la calidad
+de sus galletas son: el tiempo de horneado, el tipo de horno a utilizar, el tipo de harina (trigo
+o almendra), la temperatura del horno, el grosor de las galletas. Por lo que es necesario
+determinar mediante un diseño de experimentos, qué factores son los que afectan más al
+proceso de horneado de un tipo de galleta y el nivel requerido para cada uno de ellos.}\\
+
+
+Considero también pensar en el tiempo de horneado en relación a la temperatura horno, puesto que a mayor temperatura se tendrá menor tiempo de horneado. No encuentro otro factor que pueda incluirse en el estudio que pueda incluirse en el estudio e influya en la mejoría de las galletas.
+
+\section{Fabiola, mercado de valores}
+\emph{Las fluctuaciones de precios en los mercados de valores, no corresponden a modelos deterministas. El uso de caminatas aleatorias ha sido usado para tratar de entender y modelar estos fenómenos [2]. Este proyecto se centrara en usar modelos de caminatas aleatorias para tratar de modelar las variaciones reales de precios en un mercado de acciones.}
+\\
+
+Seria conveniente definir que valores  de las acciones podrían ser mas afines, parece obvio que hay algunos que pueden tener un impacto que no es tan aleatorio, por ejemplo el precio del petroleo, si no se mueven los autos por la pandemia entonces el petroleo disminuye. Por lo que hay que ver factores aleatorios que cambia los precios.
+
+\section{Johana, Encuesta nacional (ENIM)}
+\emph{Mediante información de la Encuesta Nacional de Niños, Niñas y Mujeres (ENIM) 2015 en México, se construye la variable binaria que tomará el valor de 1 si el niño (entre 0 y 5 años) está desnutrido y cero, en caso contrario. La desnutrición es medida a través del indicador talla para la edad. Se utilizarán variables explicativas como la edad de la madre, número de hermanos, región de nacimiento y lactancia por parte de la madre, ingresos de la familia y, se utilizará un modelo de regresión Logit para tratar de explicar la probabilidad de si un niño es desnutrido o no.}\\
+
+
+Seria bueno que se comparara con una binomial múltiple, para comparar los resultados con la regresión Logit. específicamente con los ingresos, la lactancia y el número de hermanos.
+
+\printbibliography[title={Referencias}]
+\end{document}
