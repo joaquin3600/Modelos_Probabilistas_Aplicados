@@ -1,0 +1,79 @@
+
+\documentclass[12pt]{article}
+
+\title{Propuestas para proyecto final}
+
+\date{}
+\usepackage{braket}
+\usepackage{bbold}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,booktabs}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{chngcntr}
+\usepackage{floatrow}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage[svgnames]{xcolor}
+\usepackage{commath}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\DeclareRobustCommand{\bbone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
+\DeclareMathOperator{\EX}{\mathbb{E}}% expected val
+\renewcommand{\spanishtablename}{Cuadro}
+\usepackage{listings}
+\usepackage[%
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
+
+\counterwithin{figure}{section}
+\renewcommand*{\figureautorefname}{Figura}
+
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
+
+\begin{document}
+	\maketitle
+	\begin{center}
+
+
+\centerline{\textbf{TAREA 15} } 
+\textbf{ }
+
+\centerline{Alumno: } 
+\centerline{Joaquín Arturo Velarde Moreno}
+
+
+	\end{center}
+	
+
+\section{Manejo de tickets y tiempos de respuesta}
+Una empresa consultora quiere expandir su base de clientes, se tiene una base de datos con clientes actuales donde se puede extraer la media de del tiempo de respuesta a los tickets solicitados por fechas, utilizando el teorema central del límite trataremos de calcular qué personal se requerirá para atender el triple de los clientes que ahora tiene.
+Además de este objetivo, se propone saber cómo se distribuyen la horas de creación un ticket, su media, varianza y usar pruebas estadísticas para comprobar su tipo de distribución.
+
+\section{Cálculo de exceso de muertes por Covid-19 en México en 2020}
+En este año se ha presentado la pandemia del Covid-19 en México, que ha causado la muerte de 114,000 personas hasta el momento. Algunos medios de comunicación y el público en general, afirman que el número de muertos es mayor, por eso existe la necesidad de tener una manera de estimar el número de muertos que se dan en México anualmente.
+Usando los datos de mortalidad de los últimos 25 años en México, se pretende ajustar dos o más distribuciones de probabilidad para estimar el número de muertes esperado en 2020, y poder calcular exceso de muertes por Covid-19 no registradas.
+
+\section{Depreciación del peso respecto al dólar}
+Las empresas necesitan tomar préstamos en el extranjero en dólares, por ello necesitan tener una idea del nivel de depreciación del peso a largo plazo, que les permita valorar el riesgo de tomar estos préstamos, para ello se va a hacer una regresión lineal con el objetivo de calcular el valor del dólar a 15 años, basándonos en los datos de los últimos 40 años dados por el banco de México.
+
+\printbibliography[title={Referencias}]
+\end{document}
